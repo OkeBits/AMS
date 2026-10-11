@@ -1,0 +1,423 @@
+
+/* =========================================
+   PARENT LOGIN - ROYAL BLUE THEME
+   Separate from the administrator login
+========================================= */
+
+:root {
+    --royal-blue: #2855C5;
+    --royal-blue-dark: #1D3F99;
+    --royal-blue-light: #EAF0FF;
+    --accent-blue: #6D91F5;
+    --text-dark: #1B2B4B;
+    --text-muted: #687792;
+    --white: #FFFFFF;
+    --border-color: #DCE4F2;
+    --error-bg: #FFF0F0;
+    --error-text: #B42318;
+    --success-bg: #EAF8EF;
+    --success-text: #187443;
+}
+
+/* Reset */
+* {
+    margin: 0;
+    padding: 0;
+    box-sizing: border-box;
+}
+
+body {
+    min-height: 100vh;
+    font-family: "Segoe UI", Arial, sans-serif;
+    color: var(--text-dark);
+
+    background:
+        radial-gradient(
+            circle at 12% 15%,
+            rgba(109, 145, 245, 0.35),
+            transparent 32%
+        ),
+        radial-gradient(
+            circle at 90% 85%,
+            rgba(40, 85, 197, 0.25),
+            transparent 30%
+        ),
+        linear-gradient(
+            135deg,
+            #244BAA 0%,
+            #3565D8 48%,
+            #547DE5 100%
+        );
+
+    display: flex;
+    align-items: center;
+    justify-content: center;
+    padding: 32px 18px;
+    overflow-x: hidden;
+}
+
+/* Decorative background circles */
+body::before,
+body::after {
+    content: "";
+    position: fixed;
+    border-radius: 50%;
+    pointer-events: none;
+    z-index: 0;
+}
+
+body::before {
+    width: 260px;
+    height: 260px;
+    top: -95px;
+    right: -65px;
+    border: 35px solid rgba(255, 255, 255, 0.10);
+}
+
+body::after {
+    width: 210px;
+    height: 210px;
+    bottom: -100px;
+    left: -60px;
+    border: 30px solid rgba(255, 255, 255, 0.10);
+}
+
+/* Main layout */
+.login-container {
+    width: 100%;
+    max-width: 460px;
+    position: relative;
+    z-index: 1;
+}
+
+/* Login card */
+.login-card {
+    background: var(--white);
+    padding: 38px 36px 28px;
+    border-radius: 22px;
+    border: 1px solid rgba(255, 255, 255, 0.7);
+
+    box-shadow:
+        0 24px 60px rgba(14, 34, 88, 0.25),
+        0 5px 16px rgba(14, 34, 88, 0.08);
+
+    animation: card-appear 0.55s ease-out;
+}
+
+/* School logo */
+.school-logo {
+    display: flex;
+    justify-content: center;
+    align-items: center;
+    margin-bottom: 18px;
+}
+
+.school-logo img {
+    width: 88px;
+    height: 88px;
+    object-fit: contain;
+    border-radius: 50%;
+    padding: 7px;
+    background: var(--royal-blue-light);
+    border: 2px solid #D9E4FF;
+}
+
+/* Portal label */
+.portal-label {
+    width: fit-content;
+    margin: 0 auto 12px;
+    padding: 7px 15px;
+    border-radius: 30px;
+
+    background: var(--royal-blue-light);
+    color: var(--royal-blue-dark);
+
+    font-size: 11px;
+    font-weight: 800;
+    letter-spacing: 2px;
+}
+
+/* Heading */
+.login-card h1 {
+    color: var(--royal-blue-dark);
+    font-size: clamp(25px, 5vw, 30px);
+    line-height: 1.25;
+    text-align: center;
+    margin-bottom: 10px;
+    font-weight: 750;
+}
+
+.subtitle {
+    max-width: 300px;
+    margin: 0 auto 27px;
+    text-align: center;
+    color: var(--text-muted);
+    font-size: 14px;
+    line-height: 1.65;
+}
+
+/* Form */
+#parent-login-form {
+    display: flex;
+    flex-direction: column;
+    gap: 19px;
+}
+
+.form-group {
+    display: flex;
+    flex-direction: column;
+    gap: 8px;
+}
+
+.form-group label {
+    color: var(--text-dark);
+    font-size: 13px;
+    font-weight: 700;
+}
+
+.form-group input {
+    width: 100%;
+    min-height: 49px;
+    padding: 13px 14px;
+
+    border: 1.5px solid var(--border-color);
+    border-radius: 10px;
+    outline: none;
+
+    background: #FBFCFF;
+    color: var(--text-dark);
+    font-family: inherit;
+    font-size: 14px;
+
+    transition:
+        border-color 0.2s ease,
+        box-shadow 0.2s ease,
+        background 0.2s ease;
+}
+
+.form-group input::placeholder {
+    color: #9AA7BC;
+}
+
+.form-group input:hover {
+    border-color: #AABDEB;
+}
+
+.form-group input:focus {
+    border-color: var(--royal-blue);
+    background: var(--white);
+    box-shadow: 0 0 0 4px rgba(40, 85, 197, 0.12);
+}
+
+.form-group small {
+    color: var(--text-muted);
+    font-size: 11px;
+    line-height: 1.5;
+}
+
+/* Password field */
+.password-wrapper {
+    display: flex;
+    align-items: center;
+    position: relative;
+}
+
+.password-wrapper input {
+    padding-right: 65px;
+}
+
+.toggle-password {
+    position: absolute;
+    right: 12px;
+
+    border: none;
+    background: transparent;
+    color: var(--royal-blue);
+    font-family: inherit;
+    font-size: 12px;
+    font-weight: 750;
+    cursor: pointer;
+}
+
+.toggle-password:hover {
+    color: var(--royal-blue-dark);
+}
+
+.toggle-password:focus-visible {
+    outline: 2px solid var(--royal-blue);
+    outline-offset: 3px;
+    border-radius: 3px;
+}
+
+/* Sign-in button */
+.login-button {
+    width: 100%;
+    min-height: 51px;
+    margin-top: 3px;
+    padding: 14px;
+
+    border: none;
+    border-radius: 10px;
+
+    background: linear-gradient(
+        135deg,
+        var(--royal-blue),
+        #3F6EE0
+    );
+
+    color: var(--white);
+    font-family: inherit;
+    font-size: 15px;
+    font-weight: 750;
+    letter-spacing: 0.3px;
+
+    cursor: pointer;
+
+    box-shadow: 0 7px 16px rgba(40, 85, 197, 0.22);
+
+    transition:
+        transform 0.2s ease,
+        box-shadow 0.2s ease,
+        background 0.2s ease;
+}
+
+.login-button:hover {
+    background: linear-gradient(
+        135deg,
+        var(--royal-blue-dark),
+        var(--royal-blue)
+    );
+
+    box-shadow: 0 10px 22px rgba(40, 85, 197, 0.28);
+    transform: translateY(-2px);
+}
+
+.login-button:active {
+    transform: translateY(0);
+}
+
+.login-button:focus-visible {
+    outline: 3px solid var(--accent-blue);
+    outline-offset: 3px;
+}
+
+.login-button:disabled {
+    opacity: 0.65;
+    cursor: not-allowed;
+    transform: none;
+    box-shadow: none;
+}
+
+/* Error and success messages */
+.message {
+    padding: 12px 14px;
+    border-radius: 9px;
+    font-size: 13px;
+    line-height: 1.5;
+    margin-bottom: 18px;
+}
+
+.message[hidden] {
+    display: none;
+}
+
+.error-message {
+    color: var(--error-text);
+    background: var(--error-bg);
+    border: 1px solid #F5CACA;
+}
+
+.success-message {
+    color: var(--success-text);
+    background: var(--success-bg);
+    border: 1px solid #C4E8D0;
+}
+
+/* Help text */
+.help-text {
+    margin-top: 23px;
+    text-align: center;
+    color: var(--text-muted);
+    font-size: 12px;
+    line-height: 1.7;
+}
+
+/* Administrator login link */
+.footer-links {
+    display: flex;
+    justify-content: center;
+    margin-top: 18px;
+}
+
+.footer-links a {
+    color: var(--royal-blue);
+    font-size: 13px;
+    font-weight: 700;
+    text-decoration: none;
+    transition: color 0.2s ease;
+}
+
+.footer-links a:hover {
+    color: var(--royal-blue-dark);
+    text-decoration: underline;
+}
+
+/* Footer */
+.footer {
+    margin-top: 25px;
+    padding-top: 17px;
+    border-top: 1px solid #EDF0F7;
+
+    text-align: center;
+    color: #8995AA;
+    font-size: 11px;
+    line-height: 1.6;
+}
+
+/* Entrance animation */
+@keyframes card-appear {
+    from {
+        opacity: 0;
+        transform: translateY(14px);
+    }
+
+    to {
+        opacity: 1;
+        transform: translateY(0);
+    }
+}
+
+/* Mobile layout */
+@media (max-width: 480px) {
+    body {
+        padding: 20px 13px;
+    }
+
+    .login-card {
+        padding: 30px 22px 23px;
+        border-radius: 18px;
+    }
+
+    .school-logo img {
+        width: 76px;
+        height: 76px;
+    }
+
+    .subtitle {
+        font-size: 13px;
+    }
+
+    #parent-login-form {
+        gap: 17px;
+    }
+}
+
+/* Respect reduced-motion settings */
+@media (prefers-reduced-motion: reduce) {
+    *,
+    *::before,
+    *::after {
+        animation-duration: 0.01ms !important;
+        transition-duration: 0.01ms !important;
+    }
+}

@@ -1,0 +1,124 @@
+
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Administrator Login | RFID Attendance System</title>
+    <link rel="stylesheet" href="/login.css">
+</head>
+
+<body>
+
+    <main class="auth-container">
+
+        <!-- LEFT SIDE: LOGIN FORM -->
+        <section class="auth-left">
+
+            <!-- SCHOOL BRAND -->
+            <div class="school-brand">
+                <img
+                    src="/school-logo.png"
+                    alt="School Logo"
+                    class="school-logo"
+                >
+                <span class="brand-name">West Prime Horizon Institute Inc. Attendance System</span>
+            </div>
+
+            <div class="auth-card">
+                <!-- LOGIN MESSAGE -->
+                <div
+                    id="loginMessage"
+                    class="message"
+                    style="display: none;"
+                    role="alert"
+                    aria-live="polite"
+                ></div>
+
+                <!-- LOGIN FORM -->
+                <form id="loginForm">
+
+                    <label for="loginUsername">
+                        Username
+                    </label>
+
+                    <input
+                        type="email"
+                        id="loginUsername"
+                        name="username"
+                        placeholder="Enter your username"
+                        autocomplete="off"
+                        autocapitalize="none"
+                        spellcheck="false"
+                        title="Please enter a valid username"
+                        required
+                    >
+
+                    <label for="loginPassword">
+                        Password
+                    </label>
+
+                    <div class="password-box">
+
+                        <input
+                            type="password"
+                            id="loginPassword"
+                            name="password"
+                            placeholder="Enter 6-digit password"
+                            maxlength="6"
+                            inputmode="numeric"
+                            pattern="[0-9]{6}"
+                            title="Password must contain exactly 6 digits"
+                            autocomplete="new-password"
+                            required
+                        >
+
+                        <button
+                            type="button"
+                            class="show-password"
+                            onclick="togglePassword('loginPassword', this)"
+                            aria-label="Show or hide password"
+                        >
+                            Show
+                        </button>
+
+                    </div>
+
+                    <button class="main-button" type="submit">
+                        Log In
+                    </button>
+
+                </form>
+
+                <p class="switch-text">
+                    Don't have an administrator account?
+                    <a href="/register">Register</a>
+                </p>
+
+            </div>
+
+            <p class="footer-text">
+                RFID Student Attendance Monitoring System
+            </p>
+
+        </section>
+
+        <!-- RIGHT SIDE: IMAGE -->
+        <section class="auth-right" aria-label="School image">
+
+            <img
+                src="/login-background.jpg"
+                alt="School campus"
+                class="background-image"
+            >
+
+            <div class="image-overlay"></div>
+
+        </section>
+
+    </main>
+
+    <script src="/script.js"></script>
+
+</body>
+</html>

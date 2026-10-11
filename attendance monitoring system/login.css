@@ -1,0 +1,501 @@
+
+/* =========================================
+   GLOBAL STYLES
+========================================= */
+
+* {
+    box-sizing: border-box;
+    margin: 0;
+    padding: 0;
+}
+
+body {
+    min-height: 100vh;
+    display: flex;
+    align-items: center;
+    justify-content: center;
+    padding: 24px;
+
+    background: linear-gradient(
+        135deg,
+        #020617 0%,
+        #07152e 45%,
+        #102b55 100%
+    );
+
+    font-family: Arial, Helvetica, sans-serif;
+    color: #f1f5f9;
+}
+
+
+/* =========================================
+   MAIN TWO-COLUMN CONTAINER
+========================================= */
+
+.auth-container {
+    display: grid;
+    grid-template-columns: 1fr 1fr;
+
+    width: 100%;
+    max-width: 1200px;
+    min-height: 690px;
+
+    background: linear-gradient(
+        145deg,
+        #111e36,
+        #080f1d
+    );
+
+    border: 1px solid #263957;
+    border-radius: 24px;
+    overflow: hidden;
+
+    box-shadow: 0 25px 65px rgba(0, 0, 0, 0.4);
+}
+
+
+/* =========================================
+   LEFT LOGIN SIDE
+========================================= */
+
+.auth-left {
+    display: flex;
+    flex-direction: column;
+
+    min-width: 0;
+    padding: 35px 48px 24px;
+
+    background: linear-gradient(
+        160deg,
+        #111e36 0%,
+        #0b1222 100%
+    );
+}
+
+
+/* =========================================
+   SCHOOL BRAND
+========================================= */
+
+.school-brand {
+    display: flex;
+    align-items: center;
+    gap: 12px;
+
+    margin-bottom: 70px;
+}
+
+.school-logo {
+    width: 60px;
+    height: 60px;
+    object-fit: contain;
+}
+
+.brand-name {
+    color: #dbeafe;
+
+    font-family: Georgia, "Times New Roman", serif;
+    font-size: 18px;
+    font-weight: bold;
+    letter-spacing: 1px;
+}
+
+
+/* =========================================
+   LOGIN CARD
+========================================= */
+
+.auth-card {
+    width: 100%;
+    max-width: 410px;
+    margin: 0 auto;
+}
+
+.auth-card h1 {
+    margin-bottom: 12px;
+
+    color: #f1f5f9;
+    font-size: 26px;
+    font-weight: 700;
+}
+
+.subtitle {
+    margin-bottom: 35px;
+
+    color: #9aabc3;
+    font-size: 15px;
+    line-height: 1.6;
+}
+
+
+/* =========================================
+   FORM LABELS AND INPUTS
+========================================= */
+
+#loginForm label {
+    display: block;
+
+    margin-bottom: 9px;
+
+    color: #dce6f5;
+    font-size: 14px;
+    font-weight: 700;
+}
+
+#loginForm input {
+    width: 100%;
+    min-width: 0;
+    height: 52px;
+
+    padding: 0 15px;
+    margin-bottom: 23px;
+
+    border: 1px solid #2c3e5b;
+    border-radius: 10px;
+
+    background: #080f1d;
+    color: #f1f5f9;
+
+    font-family: inherit;
+    font-size: 14px;
+    outline: none;
+
+    transition:
+        border-color 0.2s ease,
+        box-shadow 0.2s ease,
+        background 0.2s ease;
+}
+
+#loginForm input::placeholder {
+    color: #7788a2;
+}
+
+#loginForm input:hover {
+    border-color: #476b9e;
+}
+
+#loginForm input:focus {
+    background: #0b1425;
+    border-color: #4385e8;
+
+    box-shadow: 0 0 0 3px rgba(59, 130, 246, 0.15);
+}
+
+
+/* =========================================
+   PASSWORD FIELD
+========================================= */
+
+.password-box {
+    position: relative;
+    display: flex;
+    align-items: center;
+}
+
+.password-box input {
+    padding-right: 75px !important;
+}
+
+.show-password {
+    position: absolute;
+    right: 13px;
+    top: 0;
+
+    height: 52px;
+    padding: 0 5px;
+
+    border: none;
+    background: transparent;
+
+    color: #7fb0ff;
+    font-family: inherit;
+    font-size: 13px;
+    font-weight: bold;
+
+    cursor: pointer;
+}
+
+.show-password:hover {
+    color: #c0d9ff;
+}
+
+
+/* =========================================
+   LOGIN BUTTON
+========================================= */
+
+.main-button {
+    width: 100%;
+    min-height: 51px;
+    margin-top: 5px;
+
+    border: 1px solid #3778d6;
+    border-radius: 10px;
+
+    background: linear-gradient(
+        135deg,
+        #2563eb,
+        #1746a2
+    );
+
+    color: #ffffff;
+    font-family: inherit;
+    font-size: 15px;
+    font-weight: bold;
+
+    cursor: pointer;
+
+    transition:
+        background 0.2s ease,
+        transform 0.2s ease,
+        box-shadow 0.2s ease;
+}
+
+.main-button:hover {
+    background: linear-gradient(
+        135deg,
+        #3478f6,
+        #2057bb
+    );
+
+    transform: translateY(-1px);
+
+    box-shadow: 0 7px 20px rgba(37, 99, 235, 0.25);
+}
+
+.main-button:active {
+    transform: translateY(0);
+    box-shadow: none;
+}
+
+
+/* =========================================
+   REGISTER LINK
+========================================= */
+
+.switch-text {
+    margin-top: 28px;
+
+    color: #9aabc3;
+    font-size: 13px;
+    line-height: 1.8;
+}
+
+.switch-text a {
+    margin-left: 4px;
+
+    color: #7fb0ff;
+    font-weight: bold;
+    text-decoration: none;
+
+    transition: color 0.2s ease;
+}
+
+.switch-text a:hover {
+    color: #c0d9ff;
+    text-decoration: underline;
+}
+
+
+/* =========================================
+   LOGIN ERROR / SUCCESS MESSAGE
+========================================= */
+
+.message {
+    margin-bottom: 20px;
+    padding: 12px 14px;
+
+    border-radius: 8px;
+    font-size: 13px;
+    line-height: 1.5;
+    overflow-wrap: anywhere;
+}
+
+.message.error {
+    background: #35151d;
+    color: #fecaca;
+    border: 1px solid #7f2938;
+}
+
+.message.success {
+    background: #102a24;
+    color: #a7f3d0;
+    border: 1px solid #24644e;
+}
+
+
+/* =========================================
+   FOOTER
+========================================= */
+
+.footer-text {
+    margin-top: auto;
+    padding-top: 35px;
+
+    color: #71829c;
+    font-size: 11px;
+    line-height: 1.6;
+}
+
+
+/* =========================================
+   RIGHT IMAGE PANEL
+========================================= */
+
+.auth-right {
+    position: relative;
+
+    min-width: 0;
+    min-height: 100%;
+    overflow: hidden;
+
+    background: #080f1d;
+}
+
+.background-image {
+    position: absolute;
+    inset: 0;
+
+    width: 100%;
+    height: 100%;
+
+    object-fit: cover;
+    object-position: center;
+}
+
+.image-overlay {
+    position: absolute;
+    inset: 0;
+
+    background: linear-gradient(
+        180deg,
+        rgba(2, 6, 23, 0.05) 15%,
+        rgba(3, 12, 32, 0.35) 50%,
+        rgba(2, 6, 23, 0.92) 100%
+    );
+}
+
+
+/* =========================================
+   IMAGE CAPTION
+========================================= */
+
+.image-caption {
+    position: absolute;
+    right: 40px;
+    bottom: 42px;
+    left: 40px;
+
+    z-index: 1;
+    color: #ffffff;
+}
+
+.image-caption h2 {
+    margin-bottom: 14px;
+
+    color: #ffffff;
+    font-size: clamp(28px, 3vw, 43px);
+    line-height: 1.15;
+}
+
+.image-caption p {
+    max-width: 360px;
+
+    color: rgba(255, 255, 255, 0.88);
+    font-size: 14px;
+    line-height: 1.8;
+}
+
+
+/* =========================================
+   TABLET
+========================================= */
+
+@media (max-width: 900px) {
+    .auth-container {
+        grid-template-columns: 0.95fr 1.05fr;
+        min-height: 620px;
+    }
+
+    .auth-left {
+        padding: 30px 28px 22px;
+    }
+
+    .school-brand {
+        margin-bottom: 55px;
+    }
+
+    .image-caption {
+        right: 24px;
+        bottom: 30px;
+        left: 24px;
+    }
+}
+
+
+/* =========================================
+   MOBILE
+========================================= */
+
+@media (max-width: 650px) {
+    body {
+        padding: 12px;
+        align-items: flex-start;
+    }
+
+    .auth-container {
+        grid-template-columns: 1fr;
+
+        max-width: 460px;
+        min-height: auto;
+
+        border-radius: 20px;
+    }
+
+    .auth-left {
+        padding: 25px 22px 24px;
+    }
+
+    .school-brand {
+        margin-bottom: 40px;
+    }
+
+    .school-logo {
+        width: 44px;
+        height: 44px;
+    }
+
+    .brand-name {
+        font-size: 17px;
+    }
+
+    .auth-card h1 {
+        font-size: 24px;
+    }
+
+    .subtitle {
+        margin-bottom: 28px;
+    }
+
+    .auth-right {
+        min-height: 280px;
+    }
+
+    .background-image {
+        object-position: center;
+    }
+
+    .image-caption {
+        right: 22px;
+        bottom: 24px;
+        left: 22px;
+    }
+
+    .image-caption h2 {
+        font-size: 30px;
+    }
+
+    .footer-text {
+        padding-top: 28px;
+    }
+}

@@ -1,0 +1,529 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Parent Dashboard | West Prime</title>
+    <link rel="stylesheet" href="/parent_dashboard.css">
+</head>
+
+<body>
+    <aside class="sidebar">
+        <div class="logo">
+            <h1>WEST PRIME</h1>
+            <p>Parent Attendance Portal</p>
+        </div>
+
+        <nav class="sidebar-nav">
+            <a href="#" class="nav-link active" data-page="dashboard">
+                 Dashboard
+            </a>
+            <a href="#" class="nav-link" data-page="attendance">
+                 Attendance Record
+            </a>
+        </nav>
+
+        <button type="button" id="logoutButton" class="logout-button">
+             Logout
+        </button>
+    </aside>
+
+    <main class="main-content">
+        <header class="header">
+            <div>
+                <p class="eyebrow">WEST PRIME HORIZON INSTITUTE INC.</p>
+                <h1 id="pageTitle">Parent Dashboard</h1>
+                <p class="header-description">
+                    View your student's school entry and exit attendance.
+                </p>
+            </div>
+
+            <div class="date-display">
+                <span>Today</span>
+                <strong id="currentDate">Loading date...</strong>
+            </div>
+        </header>
+
+        <!-- DASHBOARD -->
+        <section id="dashboardPage" class="page-section active">
+            <div class="welcome-card">
+                <div>
+                    <span class="welcome-label">PARENT PORTAL</span>
+                    <h2>Welcome!</h2>
+                    <p>
+                        Monitor your student's attendance records and
+                        school arrival and departure times.
+                    </p>
+                </div>
+                <div class="welcome-icon">🎓</div>
+            </div>
+
+            <div class="cards">
+                <article class="card">
+                    <div class="card-icon"></div>
+                    <h3>Students</h3>
+                    <h2 id="totalChildren">0</h2>
+                    <p>Registered under your account</p>
+                </article>
+
+                <article class="card">
+                    <div class="card-icon"></div>
+                    <h3>Records Today</h3>
+                    <h2 id="recordsToday">0</h2>
+                    <p>Attendance records for today</p>
+                </article>
+
+                <article class="card">
+                    <div class="card-icon"></div>
+                    <h3>Present Today</h3>
+                    <h2 id="presentToday">0</h2>
+                    <p>Students with an entry record today</p>
+                </article>
+            </div>
+
+            <div class="attendance-card">
+                <div class="section-heading">
+                    <div>
+                        <h2>Today's Attendance</h2>
+                        
+                    </div>
+                    <button type="button" class="secondary-button" id="refreshButton">
+                        ↻ Refresh
+                    </button>
+                </div>
+
+                <div class="table-container">
+                    <table>
+                        <thead>
+                            <tr>
+                                <th>RFID Number</th>
+                                <th>Full Name</th>
+                                <th>Grade Level</th>
+                                <th>Section</th>
+                                <th>Date</th>
+                                <th>Time In</th>
+                                <th>Time Out</th>
+                                <th>Status</th>
+                            </tr>
+                        </thead>
+                        <tbody id="todayAttendanceTable">
+                            <tr>
+                                <td colspan="8" class="empty-state">
+                                    Loading attendance records...
+                                </td>
+                            </tr>
+                        </tbody>
+                    </table>
+                </div>
+            </div>
+        </section>
+
+        <!-- MY CHILDREN -->
+        <section id="childrenPage" class="page-section">
+            <div class="section-heading page-heading">
+                <div>
+                    <h2>Students
+                    </h2>
+                    <p>
+                        Select a group to view your Students's attendance.
+                        Only records linked to your account will be shown.
+                    </p>
+                </div>
+            </div>
+
+            <div class="category-card">
+                <div class="category-heading">
+                    <h3>Senior High School</h3>
+                    <p>Select a strand and grade level.</p>
+                </div>
+
+                <div class="category-grid">
+                    <button class="group-button" data-group="BE 11">BE 11<span>Grade 11</span></button>
+                    <button class="group-button" data-group="BE 12">BE 12<span>Grade 12</span></button>
+                    <button class="group-button" data-group="ASSH 11">ASSH 11<span>Grade 11</span></button>
+                    <button class="group-button" data-group="ASSH 12">ASSH 12<span>Grade 12</span></button>
+                    <button class="group-button" data-group="STEM 11">STEM 11<span>Grade 11</span></button>
+                    <button class="group-button" data-group="STEM 12">STEM 12<span>Grade 12</span></button>
+                    <button class="group-button" data-group="ICT 11">ICT 11<span>Grade 11</span></button>
+                    <button class="group-button" data-group="ICT 12">ICT 12<span>Grade 12</span></button>
+                    <button class="group-button" data-group="IT 11">IT 11<span>Grade 11</span></button>
+                    <button class="group-button" data-group="IT 12">IT 12<span>Grade 12</span></button>
+                </div>
+            </div>
+
+            <div class="category-card">
+                <div class="category-heading">
+                    <h3>College</h3>
+                    <p>Select a program and year level.</p>
+                </div>
+
+                <div class="category-grid">
+                    <button class="group-button" data-group="BSIT 1st Year">BSIT 1st Year<span>College</span></button>
+                    <button class="group-button" data-group="BSIT 2nd Year">BSIT 2nd Year<span>College</span></button>
+                    <button class="group-button" data-group="BSIT 3rd Year">BSIT 3rd Year<span>College</span></button>
+                    <button class="group-button" data-group="BSIT 4th Year">BSIT 4th Year<span>College</span></button>
+
+                    <button class="group-button" data-group="BAELS 1st Year">BAELS 1st Year<span>College</span></button>
+                    <button class="group-button" data-group="BAELS 2nd Year">BAELS 2nd Year<span>College</span></button>
+                    <button class="group-button" data-group="BAELS 3rd Year">BAELS 3rd Year<span>College</span></button>
+                    <button class="group-button" data-group="BAELS 4th Year">BAELS 4th Year<span>College</span></button>
+
+                    <button class="group-button" data-group="BTVTED 1st Year">BTVTED 1st Year<span>College</span></button>
+                    <button class="group-button" data-group="BTVTED 2nd Year">BTVTED 2nd Year<span>College</span></button>
+                    <button class="group-button" data-group="BTVTED 3rd Year">BTVTED 3rd Year<span>College</span></button>
+                    <button class="group-button" data-group="BTVTED 4th Year">BTVTED 4th Year<span>College</span></button>
+                </div>
+            </div>
+
+            <div class="attendance-card group-results" id="groupResults">
+                <div class="section-heading">
+                    <div>
+                        <h2 id="selectedGroupTitle">Attendance by Group</h2>
+                        <p id="selectedGroupDescription">
+                            Select a group above to filter your records.
+                        </p>
+                    </div>
+                    <button type="button" class="secondary-button" id="clearGroupButton">
+                        Clear Filter
+                    </button>
+                </div>
+
+                <div class="table-container">
+                    <table>
+                        <thead>
+                            <tr>
+                                <th>RFID Number</th>
+                                <th>Full Name</th>
+                                <th>Grade Level</th>
+                                <th>Section</th>
+                                <th>Date</th>
+                                <th>Time In</th>
+                                <th>Time Out</th>
+                                <th>Status</th>
+                            </tr>
+                        </thead>
+                        <tbody id="groupAttendanceTable">
+                            <tr>
+                                <td colspan="8" class="empty-state">
+                                    Select a group to view records.
+                                </td>
+                            </tr>
+                        </tbody>
+                    </table>
+                </div>
+            </div>
+        </section>
+
+        <!-- ATTENDANCE HISTORY -->
+        <section id="attendancePage" class="page-section">
+            <div class="attendance-card">
+                <div class="section-heading">
+                    <div>
+                        <h2>Attendance History</h2>
+                        <p>Search the attendance records linked to your account.</p>
+                    </div>
+                    <button type="button" class="secondary-button" id="historyRefreshButton">
+                        ↻ Refresh
+                    </button>
+                </div>
+
+                <div class="search-container">
+                    <input
+                        type="search"
+                        id="attendanceSearch"
+                        placeholder="Search by name, RFID, strand, or date..."
+                        autocomplete="off"
+                    >
+                </div>
+
+                <div class="table-container">
+                    <table>
+                        <thead>
+                            <tr>
+                                <th>RFID Number</th>
+                                <th>Full Name</th>
+                                <th>Grade Level</th>
+                                <th>Section</th>
+                                <th>Date</th>
+                                <th>Time In</th>
+                                <th>Time Out</th>
+                                <th>Status</th>
+                            </tr>
+                        </thead>
+                        <tbody id="historyAttendanceTable">
+                            <tr>
+                                <td colspan="8" class="empty-state">
+                                    Loading attendance records...
+                                </td>
+                            </tr>
+                        </tbody>
+                    </table>
+                </div>
+            </div>
+        </section>
+
+        <p id="pageMessage" class="page-message" role="status"></p>
+        <footer class="page-footer">
+            West Prime Horizon Institute Inc. · Parent Attendance Portal
+        </footer>
+    </main>
+
+    <script>
+        let allRecords = [];
+        let selectedGroup = null;
+
+        const $ = (id) => document.getElementById(id);
+
+        function escapeHTML(value) {
+            return String(value ?? "").replace(/[&<>"']/g, character => ({
+                "&": "&amp;",
+                "<": "&lt;",
+                ">": "&gt;",
+                '"': "&quot;",
+                "'": "&#39;"
+            })[character]);
+        }
+
+        function normalize(value) {
+            return String(value ?? "").trim().toLowerCase();
+        }
+
+        function groupForRecord(record) {
+            const strand = String(record.strand || "").trim();
+            const level = String(record.grade_level || "").trim();
+            const education = String(record.education_level || "").trim().toLowerCase();
+
+            if (education === "senior high school") {
+                const match = level.match(/^grade\s*(11|12)$/i);
+                return match ? `${strand} ${match[1]}` : "";
+            }
+
+            if (education === "college" &&
+                ["1st Year", "2nd Year", "3rd Year", "4th Year"].includes(level)) {
+                return `${strand} ${level}`;
+            }
+
+            return "";
+        }
+
+        function isToday(dateValue) {
+            if (!dateValue) return false;
+
+            const now = new Date();
+            const localDate = [
+                now.getFullYear(),
+                String(now.getMonth() + 1).padStart(2, "0"),
+                String(now.getDate()).padStart(2, "0")
+            ].join("-");
+
+            return String(dateValue).slice(0, 10) === localDate;
+        }
+
+        function renderRows(records, tableId, emptyMessage) {
+            const table = $(tableId);
+
+            if (!records.length) {
+                table.innerHTML = `
+                    <tr>
+                        <td colspan="8" class="empty-state">
+                            ${escapeHTML(emptyMessage)}
+                        </td>
+                    </tr>`;
+                return;
+            }
+
+            table.innerHTML = records.map(record => `
+                <tr>
+                    <td>${escapeHTML(record.rfid_number)}</td>
+                    <td>${escapeHTML(record.full_name)}</td>
+                    <td>${escapeHTML(record.grade_level)}</td>
+                    <td>${escapeHTML(record.strand)}</td>
+                    <td>${escapeHTML(record.date)}</td>
+                    <td>${escapeHTML(record.time_in || "—")}</td>
+                    <td>${escapeHTML(record.time_out || "—")}</td>
+                    <td>
+                        <span class="status-badge status-${escapeHTML(
+                            normalize(record.status).replace(/[^a-z0-9-]/g, "")
+                        )}">
+                            ${escapeHTML(record.status || "Recorded")}
+                        </span>
+                    </td>
+                </tr>
+            `).join("");
+        }
+
+        function renderDashboard() {
+            const todayRecords = allRecords.filter(record => isToday(record.date));
+            const children = new Set(allRecords.map(record => record.rfid_number).filter(Boolean));
+            const presentRFIDs = new Set(
+                todayRecords
+                    .filter(record => record.time_in)
+                    .map(record => record.rfid_number)
+                    .filter(Boolean)
+            );
+
+            $("totalChildren").textContent = children.size;
+            $("recordsToday").textContent = todayRecords.length;
+            $("presentToday").textContent = presentRFIDs.size;
+
+            renderRows(
+                todayRecords,
+                "todayAttendanceTable",
+                "No attendance records for today."
+            );
+        }
+
+        function renderHistory() {
+            const query = normalize($("attendanceSearch").value);
+
+            const filtered = allRecords.filter(record => {
+                const searchable = [
+                    record.rfid_number,
+                    record.full_name,
+                    record.grade_level,
+                    record.strand,
+                    record.date,
+                    record.status
+                ].map(normalize).join(" ");
+
+                return searchable.includes(query);
+            });
+
+            renderRows(
+                filtered,
+                "historyAttendanceTable",
+                "No matching attendance records were found."
+            );
+        }
+
+        function showGroup(groupName) {
+            selectedGroup = groupName;
+
+            const matchingRecords = allRecords.filter(
+                record => groupForRecord(record) === groupName
+            );
+
+            $("selectedGroupTitle").textContent = groupName;
+            $("selectedGroupDescription").textContent =
+                `${matchingRecords.length} attendance record(s) linked to your account.`;
+
+            renderRows(
+                matchingRecords,
+                "groupAttendanceTable",
+                "No attendance records for your Students in this group."
+            );
+
+            $("groupResults").scrollIntoView({
+                behavior: "smooth",
+                block: "start"
+            });
+        }
+
+        function showPage(pageName) {
+            const pages = {
+                dashboard: "dashboardPage",
+                children: "childrenPage",
+                attendance: "attendancePage"
+            };
+
+            Object.values(pages).forEach(id => $(id).classList.remove("active"));
+            $(pages[pageName]).classList.add("active");
+
+            document.querySelectorAll(".nav-link").forEach(link => {
+                link.classList.toggle("active", link.dataset.page === pageName);
+            });
+
+            const titles = {
+                dashboard: "Parent Dashboard",
+                children: "Students",
+                attendance: "Attendance History"
+            };
+
+            $("pageTitle").textContent = titles[pageName];
+        }
+
+        async function loadAttendance() {
+            $("pageMessage").textContent = "";
+
+            try {
+                const response = await fetch("/api/parent-attendance", {
+                    method: "GET",
+                    credentials: "same-origin",
+                    cache: "no-store"
+                });
+
+                if (response.status === 401 || response.status === 403) {
+                    window.location.href = "/parent-login";
+                    return;
+                }
+
+                const data = await response.json();
+
+                if (!response.ok || data.success !== true) {
+                    throw new Error(data.message || "Unable to load attendance.");
+                }
+
+                allRecords = Array.isArray(data.history) ? data.history : [];
+
+                renderDashboard();
+                renderHistory();
+
+                if (selectedGroup) {
+                    showGroup(selectedGroup);
+                }
+            } catch (error) {
+                console.error("Parent attendance error:", error);
+                $("pageMessage").textContent =
+                    "Could not load attendance. Please check your connection and try again.";
+
+                renderRows([], "todayAttendanceTable", "Attendance could not be loaded.");
+                renderRows([], "historyAttendanceTable", "Attendance could not be loaded.");
+                renderRows([], "groupAttendanceTable", "Attendance could not be loaded.");
+            }
+        }
+
+        document.querySelectorAll(".nav-link").forEach(link => {
+            link.addEventListener("click", event => {
+                event.preventDefault();
+                showPage(link.dataset.page);
+            });
+        });
+
+        document.querySelectorAll(".group-button").forEach(button => {
+            button.addEventListener("click", () => {
+                showGroup(button.dataset.group);
+            });
+        });
+
+        $("clearGroupButton").addEventListener("click", () => {
+            selectedGroup = null;
+            $("selectedGroupTitle").textContent = "Attendance by Group";
+            $("selectedGroupDescription").textContent =
+                "Select a group above to filter your records.";
+            renderRows([], "groupAttendanceTable", "Select a group to view records.");
+        });
+
+        $("attendanceSearch").addEventListener("input", renderHistory);
+        $("refreshButton").addEventListener("click", loadAttendance);
+        $("historyRefreshButton").addEventListener("click", loadAttendance);
+
+        $("logoutButton").addEventListener("click", async () => {
+            try {
+                await fetch("/parent-logout", {
+                    method: "POST",
+                    credentials: "same-origin"
+                });
+            } finally {
+                window.location.href = "/parent-login";
+            }
+        });
+
+        $("currentDate").textContent = new Date().toLocaleDateString(
+            "en-PH",
+            { year: "numeric", month: "long", day: "numeric" }
+        );
+
+        loadAttendance();
+    </script>
+</body>
+</html>

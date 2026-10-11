@@ -1,0 +1,1627 @@
+<html lang="en">
+
+<head>
+
+    <meta charset="UTF-8">
+
+    <meta
+        name="viewport"
+        content="width=device-width, initial-scale=1.0"
+    >
+
+    <title>RFID Attendance Dashboard</title>
+
+    <link rel="stylesheet" href="/Home.css">
+
+</head>
+
+
+<body>
+
+
+    <!-- ================================
+         SIDEBAR
+    ================================= -->
+
+    <div class="sidebar">
+
+        <div class="logo">
+
+            <h1>RFID SYSTEM</h1>
+
+            <p>
+                Student Attendance Monitoring
+            </p>
+
+        </div>
+
+
+        <!-- Dashboard -->
+
+        <a
+            href="#home"
+            onclick="showSection('home'); return false;"
+        >
+            🏠 Dashboard
+        </a>
+
+
+        <!-- Add Student -->
+
+        <a
+            href="javascript:void(0)"
+            onclick="showSection('register'); return false;">
+            ➕ Add Student
+        </a>
+
+        <!-- RFID Scanner -->
+
+        <a
+            href="javascript:void(0)"
+            onclick="showSection('scanner'); return false;"
+        >
+            📡 RFID Scanner
+        </a>
+
+        <!-- Student List -->
+
+        <a
+            href="#students"
+            onclick="showSection('students'); return false;"
+        >
+            👨‍🎓 Student List
+        </a>
+
+        <!-- Attendance -->
+
+        <a
+            href="javascript:void(0)"
+            onclick="showSection('reports'); return false;"
+        >
+            📊 Attendance Reports
+        </a>
+
+
+        <!-- Settings -->
+
+        <a
+            href="#settings"
+            onclick="showSection('settings'); return false;"
+        >
+            ⚙️ Settings
+        </a>
+
+
+        <!-- Logout -->
+
+        <a
+            href="/logout"
+            onclick="return logout()"
+        >
+            🚪 Logout
+        </a>
+
+    </div>
+
+
+
+    <!-- ================================
+         MAIN CONTENT
+    ================================= -->
+
+    <div class="main-content">
+
+
+        <!-- HEADER -->
+
+        <div class="header">
+
+            <div>
+
+                <h1 id="pageTitle">
+                    Admin Dashboard
+                </h1>
+            </div>
+
+
+            
+
+        </div>
+
+
+
+        <!-- ================================
+             DASHBOARD CARDS
+        ================================= -->
+
+        <div class="cards">
+
+
+            <div class="card">
+
+                <h3>
+                    Total Students
+                </h3>
+
+                <h2 id="totalStudents">
+                    0
+                </h2>
+
+            </div>
+
+
+            <div class="card">
+
+                <h3>
+                    Entered Today
+                </h3>
+
+                <h2 id="enteredToday">
+                    0
+                </h2>
+
+            </div>
+
+
+            <div class="card">
+
+                <h3>
+                    Absent Today
+                </h3>
+
+                <h2 id="absentToday">
+                    0
+                </h2>
+
+            </div>
+
+
+            <div class="card">
+
+                <h3>
+                    Most Absent Strand
+                </h3>
+
+                <h2 id="mostAbsent">
+                    None
+                </h2>
+
+            </div>
+
+        </div>
+
+
+
+ <!-- ================================
+     HOME / DASHBOARD
+================================= -->
+
+<div
+    class="section active dashboard-section"
+    id="home"
+>
+
+    <div class="dashboard-title-row">
+        
+        <div>
+            <h2>Today's Attendance</h2>
+        </div>
+
+        <div class="dashboard-date">
+             <span id="currentDate"></span>
+        </div>
+
+    </div>
+
+
+    <!-- ATTENDANCE TABLE -->
+
+    <div class="attendance-card">
+
+        <div class="attendance-card-header">
+
+            <div>
+                <h3>Student Attendance</h3>
+
+                <p>
+                    Today's recorded attendance
+                </p>
+            </div>
+
+        </div>
+
+
+        <div class="attendance-table-container">
+
+            <table>
+
+                <thead>
+
+                    <tr>
+                        <th>RFID Number</th>
+                        <th>Full Name</th>
+                        <th>Grade Level</th>
+                        <th>Section</th>
+                        <th>Date</th>
+                        <th>Time In</th>
+                        <th>Time Out</th>
+                        <th>Status</th>
+                    </tr>
+
+                </thead>
+
+
+                <tbody id="dashboardAttendanceTable">
+
+    <tr class="empty-attendance-row">
+
+        <td colspan="8">
+            No attendance records for today.
+        </td>
+
+    </tr>
+
+</tbody>
+
+            </table>
+
+        </div>
+
+    </div>
+
+</div>
+
+        <!-- ================================
+             ADD STUDENT
+        ================================= -->
+
+<div class="section" id="register">
+
+    <div class="section-title">
+        <div>
+            <h2>Add New Student</h2>
+            <p>Register a student into the RFID attendance monitoring system.</p>
+        </div>
+    </div>
+
+    <div class="student-form-card">
+
+        <div class="form-card-header">
+            <h3>Student Information</h3>
+            <p>Enter the student's information carefully before saving.</p>
+        </div>
+
+        <form id="studentForm">
+
+            <!-- RFID NUMBER -->
+            <div class="form-group">
+                <label for="rfidNumber">RFID Number</label>
+                <input
+                    type="text"
+                    id="rfidNumber"
+                    name="rfidNumber"
+                    placeholder="Enter RFID number"
+                    required
+                >
+                <small>Each RFID number can only belong to one student.</small>
+            </div>
+
+            <!-- FULL NAME -->
+            <div class="form-group">
+                <label for="fullName">Full Name</label>
+                <input
+                    type="text"
+                    id="fullName"
+                    name="fullName"
+                    placeholder="Enter student's full name"
+                    required
+                >
+                <small>Full name must not already exist in the system.</small>
+            </div>
+
+            <!-- AGE + BIRTHDAY -->
+            <div class="form-row">
+
+                <div class="form-group">
+                    <label for="age">Age</label>
+                    <input
+                        type="number"
+                        id="age"
+                        name="age"
+                        placeholder="Enter age"
+                        min="12"
+                        max="100"
+                        required
+                    >
+                </div>
+
+                <div class="form-group">
+                    <label for="birthday">Birthday</label>
+                    <input
+                        type="date"
+                        id="birthday"
+                        name="birthday"
+                        required
+                    >
+                </div>
+
+            </div>
+                <!-- EDUCATION LEVEL -->
+                <input
+                    type="hidden"
+                    id="educationLevel"
+                    name="educationLevel"
+                    value="Senior High School"
+                >
+
+            <!-- GRADE LEVEL -->
+            <div class="form-group">
+                <label for="gradeLevel">Grade Level</label>
+
+                <select
+                    id="gradeLevel"
+                    name="gradeLevel"
+                    required
+                >
+                    <option value="" disabled selected>
+                        Select grade level
+                    </option>
+                    <option value="Grade 11">Grade 11</option>
+                    <option value="Grade 12">Grade 12</option>
+                </select>
+            </div>
+
+
+            
+            <!-- STRAND -->
+            <div class="form-group">
+                <label for="strand">Strand</label>
+
+                <select
+                    id="strand"
+                    name="strand"
+                    required
+                >
+                    <option value="" disabled selected>
+                        Select strand
+                    </option>
+                    <option value="BE">BE</option>
+                    <option value="ASSH">ASSH</option>
+                    <option value="STEM">STEM</option>
+                    <option value="ICT">ICT</option>
+                    <option value="IT">IT</option>
+                </select>
+            </div>
+
+                        
+            <!-- STUDENT SCHEDULE -->
+            <div class="form-group">
+                <label for="schedule_type">Student Schedule</label>
+                <select
+                    id="schedule_type"
+                    name="schedule_type"
+                    required
+                >
+                    <option value="" disabled selected>
+                        Select student schedule
+                    </option>
+                    <option value="Morning">Morning Student</option>
+                    <option value="Afternoon/Night">Afternoon/Night Student</option>
+                </select>
+            </div>
+
+            <div class="form-row">
+                <div class="form-group">
+                    <label for="class_start_time">Class Start Time</label>
+                    <input
+                        type="time"
+                        id="class_start_time"
+                        name="class_start_time"
+                        required
+                    >
+                </div>
+
+                <div class="form-group">
+                    <label for="class_end_time">Class End Time</label>
+                    <input
+                        type="time"
+                        id="class_end_time"
+                        name="class_end_time"
+                        required
+                    >
+                </div>
+            </div>
+            <!-- END STUDENT SCHEDULE -->
+
+
+            <!-- PARENT NAME -->
+            <div class="form-group">
+                <label for="parentName">Parent's Name</label>
+
+                <input
+                    type="text"
+                    id="parentName"
+                    name="parentName"
+                    placeholder="Enter parent's full name"
+                    required
+                >
+            </div>
+
+            <!-- PARENT PHONE -->
+            <div class="form-group">
+                <label for="parentPhone">Parent's Phone Number</label>
+
+                <input
+                    type="tel"
+                    id="parentPhone"
+                    name="parentPhone"
+                    placeholder="09XXXXXXXXX"
+                    maxlength="11"
+                    required
+                >
+
+                <small>
+                    Enter an 11-digit Philippine mobile number.
+                </small>
+            </div>
+
+            <!-- MESSAGE -->
+            <div
+                id="studentFormMessage"
+                class="student-form-message"
+                style="display: none;"
+            ></div>
+
+            <!-- BUTTON -->
+            <div class="form-actions">
+                <button
+                    type="submit"
+                    class="save-student-btn"
+                >
+                    Save Student
+                </button>
+            </div>
+
+        </form>
+
+    </div>
+
+</div>
+
+
+
+        <!-- ================================
+             STUDENT LIST
+        ================================= -->
+
+        <!-- =================================
+     STUDENT LIST
+================================= -->
+
+<div class="section" id="students">
+
+    <div class="section-title">
+        <div>
+            <h2>Student List</h2>
+            <p>Select a strand or program to view registered students.</p>
+        </div>
+    </div>
+
+
+    <!-- =================================
+         SENIOR HIGH SCHOOL
+    ================================= -->
+
+    <div class="student-category-card">
+
+        <div class="student-category-header">
+            <h3>Senior High School</h3>
+            <p>Select a strand and grade level.</p>
+        </div>
+
+        <div class="student-category-grid">
+
+            <button
+                type="button"
+                class="student-category-button"
+                onclick="showStudentGroup('BE 11')"
+            >
+                <strong>BE 11</strong>
+                <span>Grade 11</span>
+            </button>
+
+            <button
+                type="button"
+                class="student-category-button"
+                onclick="showStudentGroup('BE 12')"
+            >
+                <strong>BE 12</strong>
+                <span>Grade 12</span>
+            </button>
+
+
+            <button
+                type="button"
+                class="student-category-button"
+                onclick="showStudentGroup('ASSH 11')"
+            >
+                <strong>ASSH 11</strong>
+                <span>Grade 11</span>
+            </button>
+
+            <button
+                type="button"
+                class="student-category-button"
+                onclick="showStudentGroup('ASSH 12')"
+            >
+                <strong>ASSH 12</strong>
+                <span>Grade 12</span>
+            </button>
+
+
+            <button
+                type="button"
+                class="student-category-button"
+                onclick="showStudentGroup('STEM 11')"
+            >
+                <strong>STEM 11</strong>
+                <span>Grade 11</span>
+            </button>
+
+            <button
+                type="button"
+                class="student-category-button"
+                onclick="showStudentGroup('STEM 12')"
+            >
+                <strong>STEM 12</strong>
+                <span>Grade 12</span>
+            </button>
+
+
+            <button
+                type="button"
+                class="student-category-button"
+                onclick="showStudentGroup('ICT 11')"
+            >
+                <strong>ICT 11</strong>
+                <span>Grade 11</span>
+            </button>
+
+            <button
+                type="button"
+                class="student-category-button"
+                onclick="showStudentGroup('ICT 12')"
+            >
+                <strong>ICT 12</strong>
+                <span>Grade 12</span>
+            </button>
+
+
+            <button
+                type="button"
+                class="student-category-button"
+                onclick="showStudentGroup('IT 11')"
+            >
+                <strong>IT 11</strong>
+                <span>Grade 11</span>
+            </button>
+
+            <button
+                type="button"
+                class="student-category-button"
+                onclick="showStudentGroup('IT 12')"
+            >
+                <strong>IT 12</strong>
+                <span>Grade 12</span>
+            </button>
+
+        </div>
+
+    </div>
+
+    <!-- =================================
+         SELECTED STUDENT GROUP
+    ================================= -->
+
+    <div
+        id="studentGroupView"
+        class="student-group-view"
+        style="display: none;"
+    >
+
+        <div class="student-group-header">
+
+            <div>
+                <h3 id="selectedStudentGroup">
+                    Students
+                </h3>
+
+                <p>
+                    Registered students in this group.
+                </p>
+            </div>
+
+            <button
+                type="button"
+                class="back-student-groups"
+                onclick="hideStudentGroup()"
+            >
+                ← Back
+            </button>
+
+        </div>
+
+
+        <div class="student-table-container">
+
+            <table>
+
+                <thead>
+                    <tr>
+                        <th>RFID Number</th>
+                        <th>Full Name</th>
+                        <th>Grade / Section</th>
+                        <th>Parent Phone</th>
+                    </tr>
+                </thead>
+
+                <tbody id="selectedStudentTable">
+
+                    <tr class="empty-student-row">
+                        <td colspan="4">
+                            No students registered in this group.
+                        </td>
+                    </tr>
+
+                </tbody>
+
+            </table>
+
+        </div>
+
+    </div>
+
+</div>
+        <!-- ================================
+     RFID SCANNER
+================================= -->
+
+<div
+    class="section"
+    id="scanner"
+>
+
+    <!-- PAGE TITLE -->
+
+    <div class="section-title">
+
+        <div>
+
+            <h2>
+                RFID Scanner
+            </h2>
+
+            <p>
+                Scan a registered student's RFID card to record attendance.
+            </p>
+
+        </div>
+
+    </div>
+
+
+    <!-- ================================
+         SCANNER CARD
+    ================================= -->
+
+    <div class="rfid-scanner-card">
+
+        <div class="rfid-scanner-header">
+
+            <div class="rfid-scanner-icon">
+                📡
+            </div>
+
+            <div>
+
+                <h3>
+                    RFID Attendance Scanner
+                </h3>
+
+                <p>
+                    Ready to scan a student's RFID card.
+                </p>
+
+            </div>
+
+        </div>
+
+
+        <!-- SCANNER STATUS -->
+
+        <div class="rfid-scanner-status">
+
+            <div
+                class="scanner-status-indicator"
+                id="scannerStatusIndicator"
+            ></div>
+
+            <span id="scannerStatusText">
+                Scanner Ready
+            </span>
+
+        </div>
+
+
+        <!-- SCAN INPUT -->
+
+        <div class="rfid-scan-area">
+
+            <label for="rfidScannerInput">
+                RFID Card Number
+            </label>
+
+            <input
+                type="text"
+                id="rfidScannerInput"
+                name="rfid_scan"
+                placeholder="Scan RFID card here..."
+                autocomplete="off"
+                inputmode="numeric"
+                spellcheck="false"
+            >
+
+            <small>
+                Place the RFID card on the scanner. The card number will
+                automatically appear here.
+            </small>
+
+        </div>
+
+
+        <!-- LAST SCAN -->
+
+        <div class="last-scan-card">
+
+            <div>
+
+                <span>
+                    Last Scanned RFID
+                </span>
+
+                <strong id="lastScannedRFID">
+                    —
+                </strong>
+
+            </div>
+
+            <div>
+
+                <span>
+                    Scan Status
+                </span>
+
+                <strong id="lastScanStatus">
+                    Waiting for scan
+                </strong>
+
+            </div>
+
+        </div>
+
+
+        <!-- STUDENT PREVIEW -->
+
+        <div
+            class="scanned-student-card"
+            id="scannedStudentCard"
+            style="display: none;"
+        >
+
+            <div class="scanned-student-header">
+
+                <h3>
+                    Student Information
+                </h3>
+
+            </div>
+
+
+            <div class="scanned-student-details">
+
+                <div>
+                    <span>RFID Number</span>
+                    <strong id="scannedStudentRFID">—</strong>
+                </div>
+
+                <div>
+                    <span>Full Name</span>
+                    <strong id="scannedStudentName">—</strong>
+                </div>
+
+                <div>
+                    <span>Grade / Year</span>
+                    <strong id="scannedStudentGrade">—</strong>
+                </div>
+
+                <div>
+                    <span>Section / Program</span>
+                    <strong id="scannedStudentSection">—</strong>
+                </div>
+            </div>
+
+        </div>
+
+    </div>
+
+</div>
+<!-- ================================
+     ATTENDANCE REPORTS
+================================= -->
+
+        <div
+            class="section"
+            id="reports"
+        >
+
+            <!-- PAGE TITLE -->
+
+            <div class="section-title">
+
+                <div>
+
+                    <h2>
+                        Attendance Reports
+                    </h2>
+
+                    <p>
+                        Generate and print monthly student attendance reports.
+                    </p>
+
+                </div>
+
+            </div>
+
+
+            <!-- ================================
+                REPORT SETTINGS
+            ================================= -->
+
+            <div class="report-control-card">
+
+                <div class="report-control-header">
+
+                    <h3>
+                        Generate Monthly Report
+                    </h3>
+
+                    <p>
+                        Select a month and student group to prepare the attendance report.
+                    </p>
+
+                </div>
+
+
+                <div class="report-controls">
+
+
+                    <!-- MONTH -->
+
+                    <div class="report-form-group">
+
+                        <label for="reportMonth">
+                            Month
+                        </label>
+
+                        <input
+                            type="month"
+                            id="reportMonth"
+                            name="reportMonth"
+                        >
+
+                    </div>
+
+
+                    <!-- STUDENT GROUP -->
+
+                    <div class="report-form-group">
+
+                        <label for="reportGroup">
+                            Student Group
+                        </label>
+
+                        <select
+                            id="reportGroup"
+                            name="reportGroup"
+                        >
+
+                            <option value="">
+                                All Students
+                            </option>
+
+
+                            <!-- SENIOR HIGH SCHOOL -->
+
+                            <optgroup label="Senior High School">
+
+                                <option value="BE 11">
+                                    BE 11
+                                </option>
+
+                                <option value="BE 12">
+                                    BE 12
+                                </option>
+
+                                <option value="ASSH 11">
+                                    ASSH 11
+                                </option>
+
+                                <option value="ASSH 12">
+                                    ASSH 12
+                                </option>
+
+                                <option value="STEM 11">
+                                    STEM 11
+                                </option>
+
+                                <option value="STEM 12">
+                                    STEM 12
+                                </option>
+
+                                <option value="ICT 11">
+                                    ICT 11
+                                </option>
+
+                                <option value="ICT 12">
+                                    ICT 12
+                                </option>
+
+                                <option value="IT 11">
+                                    IT 11
+                                </option>
+
+                                <option value="IT 12">
+                                    IT 12
+                                </option>
+
+                            </optgroup>
+
+                        </select>
+
+                    </div>
+
+
+                    <!-- GENERATE BUTTON -->
+
+                    <button
+                        type="button"
+                        class="generate-report-button"
+                        onclick="generateAttendanceReport()"
+                    >
+
+                        📊 Generate Report
+
+                    </button>
+
+                </div>
+
+            </div>
+
+
+            <!-- ================================
+                ATTENDANCE REPORT
+            ================================= -->
+
+            <div
+                id="attendanceReport"
+                class="attendance-report"
+            >
+
+            <!-- PRINT-ONLY SCHOOL HEADER -->
+                <div class="print-only-header">
+
+                    <h1>RFID STUDENT ATTENDANCE MONITORING SYSTEM</h1>
+
+                    <h2>MONTHLY ATTENDANCE SHEET</h2>
+
+                    <div class="print-report-info">
+                        <span>
+                            <strong>Month:</strong>
+                            <span id="printMonth">—</span>
+                        </span>
+
+                        <span>
+                            <strong>Student Group:</strong>
+                            <span id="printGroup">All Students</span>
+                        </span>
+                    </div>
+
+                </div>
+
+                <!-- REPORT HEADER -->
+
+                <div class="report-header">
+
+                    <div>
+
+                        <h3>
+                            RFID Student Attendance Monitoring System
+                        </h3>
+
+                        <h2 id="reportTitle">
+                            Monthly Attendance Report
+                        </h2>
+
+                        <p id="reportSubtitle">
+                            Select a month and generate a report.
+                        </p>
+
+                    </div>
+
+
+                    <!-- PRINT -->
+
+                    <button
+                        type="button"
+                        class="print-report-button"
+                        onclick="printAttendanceReport()"
+                    >
+
+                        🖨️ Print Report
+
+                    </button>
+
+                </div>
+
+
+                <!-- ================================
+                    REPORT SUMMARY
+                ================================= -->
+
+                <div class="report-summary">
+
+
+                    <div class="report-summary-item">
+
+                        <span>
+                            Total Students
+                        </span>
+
+                        <strong id="reportTotalStudents">
+                            0
+                        </strong>
+
+                    </div>
+
+
+                    <div class="report-summary-item">
+
+                        <span>
+                            Total Present
+                        </span>
+
+                        <strong id="reportPresent">
+                            0
+                        </strong>
+
+                    </div>
+
+
+                    <div class="report-summary-item">
+
+                        <span>
+                            Total Late
+                        </span>
+
+                        <strong id="reportLate">
+                            0
+                        </strong>
+
+                    </div>
+
+
+                    <div class="report-summary-item">
+
+                        <span>
+                            Total Absent
+                        </span>
+
+                        <strong id="reportAbsent">
+                            0
+                        </strong>
+
+                    </div>
+
+                </div>
+
+
+                <!-- ================================
+                    REPORT TABLE
+                ================================= -->
+
+                <div class="report-table-container">
+
+                    <table>
+
+                        <thead>
+
+                            <tr>
+
+                                <th>
+                                    RFID Number
+                                </th>
+
+                                <th>
+                                    Full Name
+                                </th>
+
+                                <th>
+                                    Grade / Section
+                                </th>
+
+                                <th>
+                                    Present
+                                </th>
+
+                                <th>
+                                    Late
+                                </th>
+
+                                <th>
+                                    Absent
+                                </th>
+
+                            </tr>
+
+                        </thead>
+
+
+                        <tbody id="attendanceReportTable">
+
+                            <tr class="empty-report-row">
+
+                                <td colspan="6">
+                                    No report generated yet.
+                                </td>
+
+                            </tr>
+
+                        </tbody>
+
+                    </table>
+
+                </div>
+
+            </div>
+
+        </div>
+
+
+
+        <!-- ================================
+             STRAND STUDENTS
+        ================================= -->
+
+        <div
+            class="section"
+            id="strandSection"
+        >
+
+            <h2 id="strandTitle">
+                Strand Students
+            </h2>
+
+
+            <p id="strandText">
+                Select a strand from the navigation menu.
+            </p>
+
+
+            <div class="strand-student-table">
+
+                <table>
+
+                    <thead>
+
+                        <tr>
+
+                            <th>
+                                RFID Number
+                            </th>
+
+                            <th>
+                                Name
+                            </th>
+
+                            <th>
+                                Age
+                            </th>
+
+                            <th>
+                                Strand
+                            </th>
+
+                            <th>
+                                Parent Number
+                            </th>
+
+                        </tr>
+
+                    </thead>
+
+
+                    <tbody id="strandStudentTable">
+
+                        <tr>
+
+                            <td colspan="5">
+                                Select a strand to view students.
+                            </td>
+
+                        </tr>
+
+                    </tbody>
+
+                </table>
+
+            </div>
+
+        </div>
+
+
+
+        <!-- ================================
+             SETTINGS
+        ================================= -->
+
+        <!-- ================================
+     SETTINGS
+================================= -->
+<div class="section" id="settings">
+
+    <div class="section-title">
+        <div>
+            <h2>Settings</h2>
+            <p>Manage SMS notifications and administrator account security.</p>
+        </div>
+    </div>
+
+    <!-- PHILSMS NOTIFICATIONS -->
+    <div class="settings-card">
+
+        <div class="settings-card-header">
+            <div>
+                <h3>📱 PhilSMS Parent Notifications</h3>
+                <p>After a time-in or time-out scan, choose whether to send the parent message in a popup.</p>
+            </div>
+        </div>
+
+        <div class="settings-card-body">
+            <form id="smsSettingsForm">
+
+                <div class="settings-form-group">
+                    <label for="philSmsApiToken">PhilSMS API Token</label>
+                    <input
+                        type="password"
+                        id="philSmsApiToken"
+                        name="api_token"
+                        placeholder="Paste your PhilSMS API token"
+                        autocomplete="new-password"
+                    >
+                    <small id="philSmsTokenStatus">Token is not configured. Your token is never shown after saving.</small>
+                </div>
+
+                <div class="settings-form-group">
+                    <label for="philSmsSenderId">Approved Sender ID</label>
+                    <input
+                        type="text"
+                        id="philSmsSenderId"
+                        name="sender_id"
+                        maxlength="11"
+                        placeholder="e.g. SCHOOL"
+                        required
+                    >
+                    <small>
+                        Enter a sender ID approved for your account (up to 11 letters or numbers).
+                        The default “PhilSMS” sender works only for Globe subscribers, not Smart.
+                        For both networks, register your own sender ID through support@philsms.com.
+                    </small>
+                </div>
+
+                <div class="settings-form-group">
+                    <label for="philSmsApiUrl">PhilSMS API Endpoint</label>
+                    <select id="philSmsApiUrl" name="api_url" required>
+                        <option value="https://app.philsms.com/api/v3/sms/send">
+                            Standard API (app.philsms.com)
+                        </option>
+                        <option value="https://dashboard.philsms.com/api/v3/sms/send">
+                            Dashboard API (dashboard.philsms.com)
+                        </option>
+                    </select>
+                    <small>Use the API host shown in your PhilSMS developer account. Standard API is selected by default.</small>
+                </div>
+
+                <div class="settings-form-group">
+                    <label for="philSmsTimeInTemplate">Time-in Message</label>
+                    <textarea
+                        id="philSmsTimeInTemplate"
+                        name="time_in_template"
+                        rows="3"
+                        maxlength="1000"
+                        required
+                    >Dear Parent/Guardian, please be informed that {student_name} arrived at school on {date} at {time}. Student details: {grade} {strand}. Thank you.</textarea>
+                </div>
+
+                <div class="settings-form-group">
+                    <label for="philSmsTimeOutTemplate">Time-out Message</label>
+                    <textarea
+                        id="philSmsTimeOutTemplate"
+                        name="time_out_template"
+                        rows="3"
+                        maxlength="1000"
+                        required
+                    >Dear Parent/Guardian, please be informed that {student_name} departed from school on {date} at {time}. Student details: {grade} {strand}. Thank you.</textarea>
+                </div>
+                <small class="sms-template-help">
+                    Available placeholders: {student_name}, {date}, {time}, {grade}, and {strand}.
+                </small>
+
+                <div class="sms-checkbox-group">
+                    <label>
+                        <input type="checkbox" id="philSmsEnabled">
+                        Allow parent SMS from the attendance popup
+                    </label>
+                    <label>
+                        <input type="checkbox" id="philSmsTimeIn">
+                        Allow SMS on student time in
+                    </label>
+                    <label>
+                        <input type="checkbox" id="philSmsTimeOut">
+                        Allow SMS on student time out
+                    </label>
+                </div>
+
+                <div
+                    id="philSmsSettingsMessage"
+                    class="sms-settings-message"
+                    role="status"
+                    aria-live="polite"
+                    style="display: none;"
+                ></div>
+
+                <div class="settings-form-actions">
+                    <button type="submit" class="change-password-button">
+                        Save PhilSMS Settings
+                    </button>
+                </div>
+            </form>
+
+            <div class="sms-test-area">
+                <label for="philSmsTestPhone">Test SMS to a Philippine mobile number</label>
+                <div class="sms-test-controls">
+                    <input
+                        type="tel"
+                        id="philSmsTestPhone"
+                        placeholder="09XXXXXXXXX"
+                        autocomplete="tel"
+                    >
+                    <button type="button" id="philSmsTestButton" class="change-password-button">
+                        Send Test SMS
+                    </button>
+                </div>
+                <small>Save SMS settings first. A successful request does not confirm delivery; check PhilSMS SMS logs. Test messages may incur charges.</small>
+            </div>
+        </div>
+    </div>
+
+    <!-- ACCOUNT SECURITY -->
+    <div class="settings-card">
+
+        <div class="settings-card-header">
+            <div>
+                <h3>🔐 Account Security</h3>
+                <p>Change the administrator password securely.</p>
+            </div>
+        </div>
+
+        <div class="settings-card-body">
+
+            <form id="changePasswordForm">
+
+                <!-- Current Gmail -->
+                <div class="settings-form-group">
+                    <label for="currentUsername">
+                        Current Gmail / Username
+                    </label>
+
+                    <input
+                        type="email"
+                        id="currentUsername"
+                        name="currentUsername"
+                        placeholder="Enter your current Gmail"
+                        autocomplete="off"
+                        required
+                    >
+                </div>
+
+                <!-- Current Password -->
+                <div class="settings-form-group">
+                    <label for="currentPassword">
+                        Current Password
+                    </label>
+
+                    <div class="password-input-wrapper">
+                        <input
+                            type="password"
+                            id="currentPassword"
+                            name="currentPassword"
+                            placeholder="Enter your current password"
+                            maxlength="6"
+                            inputmode="numeric"
+                            autocomplete="new-password"
+                            required
+                        >
+
+                        <button
+                            type="button"
+                            class="settings-password-toggle"
+                            onclick="togglePassword('currentPassword', this)"
+                        >
+                            Show
+                        </button>
+                    </div>
+                </div>
+
+                <!-- Administrative Code -->
+                <div class="settings-form-group">
+
+                    <label for="administrativeCode">
+                        Administrative Code
+                    </label>
+
+                    <input
+                        type="password"
+                        id="administrativeCode"
+                        name="administrativeCode"
+                        placeholder="Enter administrative code"
+                        autocomplete="off"
+                        required
+                    >
+
+                    <small>
+                        The administrative code is required to authorize
+                        password changes.
+                    </small>
+
+                </div>
+
+                <!-- New Password -->
+                <div class="settings-form-group">
+                    <label for="newPassword">
+                        New Password
+                    </label>
+
+                    <div class="password-input-wrapper">
+                        <input
+                            type="password"
+                            id="newPassword"
+                            name="newPassword"
+                            placeholder="Enter new 6-digit password"
+                            maxlength="6"
+                            inputmode="numeric"
+                            autocomplete="new-password"
+                            required
+                        >
+
+                        <button
+                            type="button"
+                            class="settings-password-toggle"
+                            onclick="togglePassword('newPassword', this)"
+                        >
+                            Show
+                        </button>
+                    </div>
+
+                    <small>
+                        Password must contain exactly 6 digits.
+                    </small>
+                </div>
+
+                <!-- Confirm Password -->
+                <div class="settings-form-group">
+                    <label for="confirmNewPassword">
+                        Confirm New Password
+                    </label>
+
+                    <div class="password-input-wrapper">
+                        <input
+                            type="password"
+                            id="confirmNewPassword"
+                            name="confirmNewPassword"
+                            placeholder="Re-enter new password"
+                            maxlength="6"
+                            inputmode="numeric"
+                            autocomplete="new-password"
+                            required
+                        >
+
+                        <button
+                            type="button"
+                            class="settings-password-toggle"
+                            onclick="togglePassword('confirmNewPassword', this)"
+                        >
+                            Show
+                        </button>
+                    </div>
+                </div>
+
+                <!-- Message -->
+                <div
+                    id="changePasswordMessage"
+                    class="change-password-message"
+                    style="display: none;"
+                ></div>
+
+                <!-- Button -->
+                <div class="settings-form-actions">
+                    <button
+                        type="submit"
+                        class="change-password-button"
+                    >
+                        🔑 Change Password
+                    </button>
+                </div>
+
+            </form>
+
+        </div>
+    </div>
+
+    <!-- ADMINISTRATIVE CODE INFORMATION -->
+    <div class="settings-info-card">
+
+        <div class="settings-info-icon">
+            🛡️
+        </div>
+
+        <div>
+            <h3>Administrative Authorization</h3>
+
+            <p>
+                Password changes require the correct administrative code.
+                Only one administrative code is authorized for this system.
+            </p>
+
+            <p>
+                The administrative code is separate from the administrator's
+                normal login password.
+            </p>
+        </div>
+
+    </div>
+
+</div>
+
+
+<div id="smsSendModal" class="sms-send-modal" hidden>
+    <div
+        class="sms-send-dialog"
+        role="dialog"
+        aria-modal="true"
+        aria-labelledby="smsSendTitle"
+        aria-describedby="smsSendDescription"
+    >
+        <h2 id="smsSendTitle">Parent Notification</h2>
+        <p id="smsSendDescription"></p>
+        <p id="smsSendResult" class="sms-send-result" role="status" aria-live="polite" hidden></p>
+    </div>
+</div>
+
+
+    <!-- JAVASCRIPT -->
+
+    <script src="/script.js?v=student-list-state-sms-copy-2"></script>
+
+</body>
+
+</html>

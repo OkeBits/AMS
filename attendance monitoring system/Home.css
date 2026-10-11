@@ -1,0 +1,3823 @@
+/* =========================================
+   RFID ATTENDANCE SYSTEM
+   MAIN DASHBOARD STYLE
+   Matches Login + Registration Design
+========================================= */
+
+
+/* =========================================
+   GLOBAL RESET
+========================================= */
+
+* {
+    box-sizing: border-box;
+    margin: 0;
+    padding: 0;
+}
+
+
+body {
+    font-family: Arial, Helvetica, sans-serif;
+
+    background: #1A1953;
+
+    min-height: 100vh;
+}
+
+
+/* =========================================
+   SIDEBAR
+========================================= */
+
+.sidebar {
+    position: fixed;
+
+    top: 0;
+    left: 0;
+
+    width: 250px;
+    height: 100vh;
+
+    background: #ffffff;
+
+    border-right: 1px solid #e2ebe5;
+
+    box-shadow:
+        4px 0 15px rgba(0, 0, 0, 0.04);
+
+    padding: 25px 15px;
+
+    overflow-y: auto;
+
+    z-index: 1000;
+}
+
+
+/* Custom scrollbar */
+
+.sidebar::-webkit-scrollbar {
+    width: 6px;
+}
+
+.sidebar::-webkit-scrollbar-track {
+    background: #f1f5f3;
+}
+
+.sidebar::-webkit-scrollbar-thumb {
+    background: #b8cfc0;
+    border-radius: 10px;
+}
+
+
+/* =========================================
+   LOGO
+========================================= */
+
+.logo {
+    text-align: center;
+
+    padding: 10px 5px 25px;
+
+    margin-bottom: 15px;
+
+    border-bottom: 1px solid #e5ece7;
+}
+
+
+.logo h1 {
+    color: #010736;
+
+    font-family: Georgia, serif;
+
+    font-size: 23px;
+
+    letter-spacing: 1px;
+
+    margin-bottom: 7px;
+}
+
+
+.logo p {
+    color: #0D1C42;
+
+    font-family: Arial, Helvetica, sans-serif;
+
+    font-size: 12px;
+
+    line-height: 1.4;
+}
+
+
+/* =========================================
+   SIDEBAR LINKS
+========================================= */
+
+.sidebar > a,
+.dropdown-button {
+    display: block;
+
+    width: 100%;
+
+    padding: 13px 15px;
+
+    margin-bottom: 7px;
+
+    border: none;
+
+    border-radius: 9px;
+
+    background: transparent;
+
+    color: #22396F;
+
+    text-decoration: none;
+
+    font-size: 14px;
+
+    font-weight: 600;
+
+    text-align: left;
+
+    cursor: pointer;
+
+    transition:
+        background 0.2s ease,
+        color 0.2s ease,
+        transform 0.2s ease;
+}
+
+
+/* Hover */
+
+.sidebar > a:hover,
+.dropdown-button:hover {
+    background: #edf5ef;
+
+    color: #232F72;
+
+    transform: translateX(3px);
+}
+
+
+/* =========================================
+   DROPDOWN
+========================================= */
+
+.dropdown-content {
+    display: none;
+
+    margin: 0 8px 8px;
+
+    padding: 6px;
+
+    background: #f7faf8;
+
+    border: 1px solid #e1ebe4;
+
+    border-radius: 9px;
+}
+
+
+/* JavaScript can add this class */
+
+.dropdown-content.show {
+    display: block;
+}
+
+
+/* Strand buttons */
+
+.dropdown-content button {
+    width: 100%;
+
+    padding: 10px 12px;
+
+    margin-bottom: 3px;
+
+    border: none;
+
+    border-radius: 7px;
+
+    background: transparent;
+
+    color: #607068;
+
+    text-align: left;
+
+    font-size: 13px;
+
+    font-weight: 600;
+
+    cursor: pointer;
+
+    transition:
+        background 0.2s ease,
+        color 0.2s ease;
+}
+
+
+.dropdown-content button:hover {
+    background: #e7f1e9;
+
+    color: #315c47;
+}
+
+
+.dropdown-content button:last-child {
+    margin-bottom: 0;
+}
+
+
+/* =========================================
+   MAIN CONTENT
+========================================= */
+
+.main-content {
+    margin-left: 250px;
+
+    min-height: 100vh;
+
+    padding: 30px 35px;
+}
+
+
+/* =========================================
+   HEADER
+========================================= */
+
+.header {
+    display: flex;
+
+    justify-content: space-between;
+
+    align-items: center;
+
+    gap: 20px;
+
+    margin-bottom: 30px;
+
+    padding: 22px 25px;
+
+    background: #091540;
+
+    border: 1px solid #e2ebe5;
+
+    border-radius: 15px;
+
+    box-shadow:
+        0 5px 18px rgba(0, 0, 0, 0.04);
+}
+
+
+.header h1 {
+    color: #22396F;
+
+    font-family: Georgia, serif;
+
+    font-size: 28px;
+
+    margin-bottom: 7px;
+}
+
+
+.header p {
+    color: #7a8981;
+
+    font-size: 13px;
+
+    font-weight: 600;
+}
+
+
+/* Administrator label */
+
+.admin {
+    padding: 10px 15px;
+
+    background: #edf5ef;
+
+    border: 1px solid #d9e8dd;
+
+    border-radius: 9px;
+
+    color: #315c47;
+
+    font-size: 13px;
+
+    font-weight: 600;
+
+    white-space: nowrap;
+}
+
+
+/* =========================================
+   DASHBOARD CARDS
+========================================= */
+
+.cards {
+    display: grid;
+
+    grid-template-columns:
+        repeat(4, minmax(0, 1fr));
+
+    gap: 18px;
+
+    margin-bottom: 25px;
+}
+
+
+.card {
+    background: #091540;
+
+    border: 1px solid black;
+
+    border-radius: 14px;
+
+    padding: 22px;
+
+    box-shadow:
+        0 5px 18px rgba(0, 0, 0, 0.04);
+
+    transition:
+        transform 0.2s ease,
+        box-shadow 0.2s ease;
+}
+
+
+.card:hover {
+    transform: translateY(-3px);
+
+    box-shadow:
+        0 9px 22px rgba(0, 0, 0, 0.07);
+}
+
+
+.card h3 {
+    color: #fcfcfc;
+
+    font-size: 13px;
+
+    font-weight: 600;
+
+    margin-bottom: 12px;
+}
+
+
+.card h2 {
+    color: #2C74B3;
+
+    font-size: 30px;
+
+    font-weight: 700;
+}
+
+
+/* =========================================
+   SECTIONS
+========================================= */
+
+.section {
+    display: none;
+
+    background: #091540;
+
+    border: 1px solid black;
+
+    border-radius: 15px;
+
+    padding: 28px;
+
+    box-shadow:
+        0 5px 18px rgba(0, 0, 0, 0.04);
+
+    margin-bottom: 25px;
+}
+
+
+.section.active {
+    display: block;
+
+    animation: sectionAppear 0.25s ease;
+}
+
+
+@keyframes sectionAppear {
+
+    from {
+        opacity: 0;
+
+        transform: translateY(8px);
+    }
+
+    to {
+        opacity: 1;
+
+        transform: translateY(0);
+    }
+
+}
+
+
+/* Section title */
+
+.section h2 {
+    color: #ffffff;
+
+    font-family: Georgia, serif;
+
+    font-size: 23px;
+
+    margin-bottom: 10px;
+}
+
+
+/* Section paragraph */
+
+.section > p {
+    color: #6f7e76;
+
+    font-size: 14px;
+
+    line-height: 1.6;
+
+    margin-bottom: 20px;
+}
+
+
+/* =========================================
+   ADD STUDENT FORM
+========================================= */
+
+.form-grid {
+    display: grid;
+
+    grid-template-columns:
+        repeat(2, minmax(0, 1fr));
+
+    gap: 15px;
+
+    margin-top: 22px;
+}
+
+
+/* Inputs */
+
+.form-grid input,
+.form-grid select,
+.settings-container input {
+    width: 100%;
+
+    padding: 13px 14px;
+
+    border: 1px solid #ccd9d1;
+
+    border-radius: 9px;
+
+    background: #fafcfb;
+
+    color: #26332d;
+
+    font-size: 14px;
+
+    outline: none;
+
+    transition:
+        border-color 0.2s ease,
+        box-shadow 0.2s ease,
+        background 0.2s ease;
+}
+
+
+/* Placeholder */
+
+.form-grid input::placeholder,
+.settings-container input::placeholder {
+    color: #a1aca6;
+}
+
+
+/* Hover */
+
+.form-grid input:hover,
+.form-grid select:hover,
+.settings-container input:hover {
+    border-color: #9fb8aa;
+
+    background: #ffffff;
+}
+
+
+/* Focus */
+
+.form-grid input:focus,
+.form-grid select:focus,
+.settings-container input:focus {
+    border-color: #4f8064;
+
+    background: #ffffff;
+
+    box-shadow:
+        0 0 0 3px rgba(79, 128, 100, 0.12);
+}
+
+
+/* =========================================
+   SAVE STUDENT BUTTON
+========================================= */
+
+.save-button {
+    margin-top: 22px;
+
+    padding: 13px 22px;
+
+    border: none;
+
+    border-radius: 9px;
+
+    background: #4f8064;
+
+    color: #ffffff;
+
+    font-size: 14px;
+
+    font-weight: 600;
+
+    cursor: pointer;
+
+    transition:
+        background 0.2s ease,
+        transform 0.2s ease,
+        box-shadow 0.2s ease;
+}
+
+
+.save-button:hover {
+    background: #3f6d53;
+
+    transform: translateY(-2px);
+
+    box-shadow:
+        0 6px 15px rgba(63, 109, 83, 0.20);
+}
+
+
+.save-button:active {
+    transform: translateY(0);
+
+    box-shadow: none;
+}
+
+
+/* =========================================
+   TABLES
+========================================= */
+
+.section table {
+    width: 100%;
+
+    border-collapse: collapse;
+
+    margin-top: 20px;
+
+    overflow: hidden;
+
+    border: 1px solid #e0e9e3;
+
+    border-radius: 10px;
+}
+
+
+/* Table header */
+
+.section table thead {
+    background: #edf5ef;
+}
+
+
+.section table th {
+    padding: 13px 12px;
+
+    color: #315c47;
+
+    font-size: 13px;
+
+    font-weight: 700;
+
+    text-align: left;
+
+    border-bottom: 1px solid #dce8df;
+}
+
+
+/* Table body */
+
+.section table td {
+    padding: 13px 12px;
+
+    color: #526159;
+
+    font-size: 13px;
+
+    border-bottom: 1px solid #edf1ee;
+}
+
+
+/* Last row */
+
+.section table tr:last-child td {
+    border-bottom: none;
+}
+
+
+/* Row hover */
+
+.section table tbody tr:hover {
+    background: #f7faf8;
+}
+
+
+/* =========================================
+   STRAND STUDENT TABLE
+========================================= */
+
+.strand-student-table {
+    width: 100%;
+
+    overflow-x: auto;
+
+    margin-top: 15px;
+}
+
+
+/* =========================================
+   SETTINGS
+========================================= */
+
+.settings-container {
+    margin-top: 20px;
+
+    padding: 22px;
+
+    background: #f8faf9;
+
+    border: 1px solid #e0e9e3;
+
+    border-radius: 12px;
+}
+
+
+.settings-container h3 {
+    color: #315c47;
+
+    font-size: 17px;
+
+    margin-bottom: 10px;
+}
+
+
+.settings-container p {
+    color: #7a8981;
+
+    font-size: 13px;
+
+    line-height: 1.5;
+
+    margin-bottom: 18px;
+}
+
+
+/* Settings labels */
+
+.settings-container label {
+    display: block;
+
+    color: #526159;
+
+    font-size: 13px;
+
+    font-weight: 600;
+
+    margin-top: 15px;
+
+    margin-bottom: 7px;
+}
+
+
+/* =========================================
+   SETTINGS BUTTON
+========================================= */
+
+.settings-button {
+    padding: 12px 18px;
+
+    margin-top: 15px;
+
+    border: none;
+
+    border-radius: 9px;
+
+    background: #4f8064;
+
+    color: #ffffff;
+
+    font-size: 13px;
+
+    font-weight: 600;
+
+    cursor: pointer;
+
+    transition:
+        background 0.2s ease,
+        transform 0.2s ease,
+        box-shadow 0.2s ease;
+}
+
+
+.settings-button:hover {
+    background: #3f6d53;
+
+    transform: translateY(-2px);
+
+    box-shadow:
+        0 5px 12px rgba(63, 109, 83, 0.20);
+}
+
+
+.settings-button:active {
+    transform: translateY(0);
+
+    box-shadow: none;
+}
+
+
+/* =========================================
+   EMPTY TABLE MESSAGE
+========================================= */
+
+.section table td[colspan] {
+    text-align: center;
+
+    padding: 25px;
+
+    color: #89968f;
+
+    font-style: italic;
+}
+
+
+/* =========================================
+   SCROLLBAR
+========================================= */
+
+::-webkit-scrollbar {
+    width: 8px;
+
+    height: 8px;
+}
+
+
+::-webkit-scrollbar-track {
+    background: #f1f5f3;
+}
+
+
+::-webkit-scrollbar-thumb {
+    background: #b8cfc0;
+
+    border-radius: 10px;
+}
+
+
+::-webkit-scrollbar-thumb:hover {
+    background: #8fae9a;
+}
+
+
+/* =========================================
+   RESPONSIVE DESIGN
+========================================= */
+
+
+/* Tablets */
+
+@media (max-width: 1000px) {
+
+    .cards {
+        grid-template-columns:
+            repeat(2, minmax(0, 1fr));
+    }
+
+    .main-content {
+        padding: 25px;
+    }
+
+}
+
+
+/* Smaller tablets */
+
+@media (max-width: 750px) {
+
+    .sidebar {
+        width: 210px;
+    }
+
+    .main-content {
+        margin-left: 210px;
+
+        padding: 20px;
+    }
+
+    .header {
+        align-items: flex-start;
+
+        flex-direction: column;
+    }
+
+    .form-grid {
+        grid-template-columns: 1fr;
+    }
+
+}
+
+
+/* Phones */
+
+@media (max-width: 600px) {
+
+    .sidebar {
+        position: relative;
+
+        width: 100%;
+
+        height: auto;
+
+        max-height: none;
+
+        border-right: none;
+
+        border-bottom: 1px solid #e2ebe5;
+    }
+
+    .main-content {
+        margin-left: 0;
+
+        padding: 15px;
+    }
+
+    .cards {
+        grid-template-columns: 1fr;
+    }
+
+    .header {
+        padding: 20px;
+    }
+
+    .header h1 {
+        font-size: 23px;
+    }
+
+    .section {
+        padding: 20px;
+    }
+
+    .form-grid {
+        grid-template-columns: 1fr;
+    }
+
+    .section table {
+        min-width: 650px;
+    }
+
+}
+
+/* =========================================
+   DASHBOARD
+========================================= */
+
+.dashboard-section {
+    padding: 28px;
+}
+
+
+/* Dashboard title row */
+
+.dashboard-title-row {
+    display: flex;
+
+    justify-content: space-between;
+
+    align-items: center;
+
+    gap: 20px;
+
+    margin-bottom: 25px;
+}
+
+
+.dashboard-title-row h2 {
+    margin-bottom: 7px;
+}
+
+
+.dashboard-title-row p {
+    margin-bottom: 0;
+}
+
+
+/* Dashboard date */
+
+.dashboard-date {
+    padding: 11px 15px;
+
+    background: gray;
+
+    border: 1px solid #000000;
+
+    border-radius: 9px;
+
+    color: #ffffff;
+
+    font-size: 13px;
+
+    font-weight: 600;
+
+    white-space: nowrap;
+}
+
+
+/* =========================================
+   ATTENDANCE CARD
+========================================= */
+
+.attendance-card {
+    background: #ffffff;
+
+    border: 1px solid #e2ebe5;
+
+    border-radius: 13px;
+
+    overflow: hidden;
+}
+
+
+/* Attendance card header */
+
+.attendance-card-header {
+    display: flex;
+
+    justify-content: space-between;
+
+    align-items: center;
+
+    padding: 20px 22px;
+
+    background: #ffffff;
+
+    border-bottom: 1px solid #e5ece7;
+}
+
+
+.attendance-card-header h3 {
+    color: #315c47;
+
+    font-size: 17px;
+
+    margin-bottom: 5px;
+}
+
+
+.attendance-card-header p {
+    color: #7a8981;
+
+    font-size: 12px;
+
+    margin: 0;
+}
+
+
+/* =========================================
+   ATTENDANCE TABLE
+========================================= */
+
+.attendance-table-container {
+    width: 100%;
+
+    overflow-x: auto;
+}
+
+
+.attendance-table-container table {
+    width: 100%;
+
+    min-width: 850px;
+
+    margin: 0;
+
+    border: none;
+
+    border-radius: 0;
+}
+
+
+.attendance-table-container th {
+    padding: 14px 16px;
+
+    background: #edf5ef;
+
+    color: #315c47;
+
+    font-size: 12px;
+
+    font-weight: 700;
+
+    white-space: nowrap;
+}
+
+
+.attendance-table-container td {
+    padding: 14px 16px;
+
+    color: #526159;
+
+    font-size: 13px;
+
+    white-space: nowrap;
+}
+
+
+.attendance-table-container tbody tr {
+    transition: background 0.2s ease;
+}
+
+
+.attendance-table-container tbody tr:hover {
+    background: #f7faf8;
+}
+
+
+/* =========================================
+   STATUS BADGES
+========================================= */
+
+.status-badge {
+    display: inline-block;
+
+    padding: 5px 10px;
+
+    border-radius: 20px;
+
+    font-size: 11px;
+
+    font-weight: 700;
+
+    white-space: nowrap;
+}
+
+
+/* Present */
+
+.status-badge.present {
+    background: #e5f3e9;
+
+    color: #39704d;
+
+    border: 1px solid #cce5d3;
+}
+
+
+/* Late */
+
+.status-badge.late {
+    background: #fff3df;
+
+    color: #a46b1c;
+
+    border: 1px solid #f1dfbd;
+}
+
+
+/* Absent */
+
+.status-badge.absent {
+    background: #f9e7e7;
+
+    color: #a64b4b;
+
+    border: 1px solid #eccfcf;
+}
+
+/* =========================================
+   ADD STUDENT SECTION
+   ========================================= */
+
+.section-title {
+    display: flex;
+    justify-content: space-between;
+    align-items: center;
+    margin-bottom: 25px;
+}
+
+.section-title h2 {
+    margin: 0 0 6px 0;
+    color: #315c47;
+    font-size: 22px;
+}
+
+.section-title p {
+    margin: 0;
+    color: #7a8981;
+    font-size: 13px;
+}
+
+
+/* STUDENT FORM CARD */
+
+.student-form-card {
+    background: #ffffff;
+    border: 1px solid #e2ebe5;
+    border-radius: 13px;
+    padding: 0;
+    overflow: hidden;
+    max-width: 900px;
+}
+
+
+/* FORM HEADER */
+
+.form-card-header {
+    padding: 20px 24px;
+    background: #edf5ef;
+    border-bottom: 1px solid #dce9df;
+}
+
+.form-card-header h3 {
+    margin: 0 0 5px 0;
+    color: #315c47;
+    font-size: 17px;
+}
+
+.form-card-header p {
+    margin: 0;
+    color: #7a8981;
+    font-size: 12px;
+}
+
+
+/* FORM */
+
+#studentForm {
+    padding: 24px;
+}
+
+
+/* FORM GROUP */
+
+.form-group {
+    margin-bottom: 20px;
+}
+
+.form-group label {
+    display: block;
+    margin-bottom: 7px;
+    color: #315c47;
+    font-size: 13px;
+    font-weight: 600;
+}
+
+.form-group small {
+    display: block;
+    margin-top: 6px;
+    color: #89968f;
+    font-size: 11px;
+}
+
+
+/* INPUTS AND SELECTS */
+
+.form-group input,
+.form-group select {
+    width: 100%;
+    box-sizing: border-box;
+    padding: 12px 13px;
+    border: 1px solid #d7e3db;
+    border-radius: 8px;
+    background: #ffffff;
+    color: #26332d;
+    font-family: inherit;
+    font-size: 13px;
+    outline: none;
+    transition: border-color 0.2s ease,
+                box-shadow 0.2s ease,
+                background 0.2s ease;
+}
+
+.form-group input::placeholder {
+    color: #a2aea7;
+}
+
+.form-group input:focus,
+.form-group select:focus {
+    border-color: #4f8064;
+    box-shadow: 0 0 0 3px rgba(79, 128, 100, 0.10);
+}
+
+
+/* DISABLED SELECT */
+
+.form-group select:disabled {
+    background: #f3f6f4;
+    color: #9aa69f;
+    cursor: not-allowed;
+}
+
+
+/* TWO-COLUMN ROW */
+
+.form-row {
+    display: grid;
+    grid-template-columns: 1fr 1fr;
+    gap: 18px;
+}
+
+
+/* FORM ACTIONS */
+
+.form-actions {
+    display: flex;
+    justify-content: flex-end;
+    margin-top: 8px;
+    padding-top: 20px;
+    border-top: 1px solid #e6ede8;
+}
+
+
+/* SAVE BUTTON */
+
+.save-student-btn {
+    border: none;
+    padding: 12px 24px;
+    border-radius: 8px;
+    background: #4f8064;
+    color: #ffffff;
+    font-family: inherit;
+    font-size: 13px;
+    font-weight: 600;
+    cursor: pointer;
+    transition: background 0.2s ease,
+                transform 0.2s ease;
+}
+
+.save-student-btn:hover {
+    background: #3f6d53;
+}
+
+.save-student-btn:active {
+    transform: translateY(1px);
+}
+
+
+/* FORM MESSAGE */
+
+.student-form-message {
+    padding: 11px 13px;
+    margin-top: 5px;
+    border-radius: 7px;
+    background: #f8f9f8;
+    border: 1px solid #e2ebe5;
+    color: #526159;
+    font-size: 12px;
+}
+
+
+/* RESPONSIVE */
+
+@media (max-width: 700px) {
+
+    .form-row {
+        grid-template-columns: 1fr;
+        gap: 0;
+    }
+
+    .student-form-card {
+        max-width: 100%;
+    }
+
+    #studentForm {
+        padding: 18px;
+    }
+
+    .form-actions {
+        justify-content: stretch;
+    }
+
+    .save-student-btn {
+        width: 100%;
+    }
+}
+
+.section {
+    display: none;
+} 
+
+.section.active {
+    display: block;
+}
+
+
+/* ==========================================
+   STUDENT LIST
+========================================== */
+
+.student-category-card {
+    background: #ffffff;
+    border: 1px solid #e2ebe5;
+    border-radius: 13px;
+    margin-bottom: 22px;
+    overflow: hidden;
+}
+
+.student-category-header {
+    padding: 20px 22px;
+    background: #edf5ef;
+    border-bottom: 1px solid #dce9df;
+}
+
+.student-category-header h3 {
+    margin: 0 0 5px 0;
+    color: #315c47;
+    font-size: 17px;
+}
+
+.student-category-header p {
+    margin: 0;
+    color: #7a8981;
+    font-size: 12px;
+}
+
+
+/* CATEGORY BUTTONS */
+
+.student-category-grid {
+    display: grid;
+    grid-template-columns: repeat(4, 1fr);
+    gap: 14px;
+    padding: 20px;
+}
+
+.student-category-button {
+    min-height: 85px;
+    padding: 15px;
+
+    border: 1px solid #dce8df;
+    border-radius: 10px;
+
+    background: #ffffff;
+
+    color: #315c47;
+
+    font-family: inherit;
+    text-align: left;
+
+    cursor: pointer;
+
+    transition:
+        background 0.2s ease,
+        border-color 0.2s ease,
+        transform 0.2s ease,
+        box-shadow 0.2s ease;
+}
+
+.student-category-button:hover {
+    background: #edf5ef;
+    border-color: #bcd4c4;
+    box-shadow: 0 4px 12px rgba(49, 92, 71, 0.08);
+    transform: translateY(-2px);
+}
+
+.student-category-button strong {
+    display: block;
+    margin-bottom: 7px;
+    font-size: 14px;
+}
+
+.student-category-button span {
+    color: #89968f;
+    font-size: 11px;
+}
+
+
+/* ==========================================
+   SELECTED STUDENT GROUP
+========================================== */
+
+.student-group-view {
+    background: #ffffff;
+    border: 1px solid #e2ebe5;
+    border-radius: 13px;
+    overflow: hidden;
+    margin-bottom: 22px;
+}
+
+.student-group-header {
+    display: flex;
+    justify-content: space-between;
+    align-items: center;
+
+    padding: 20px 22px;
+
+    background: #edf5ef;
+    border-bottom: 1px solid #dce9df;
+}
+
+.student-group-header h3 {
+    margin: 0 0 5px 0;
+    color: #315c47;
+    font-size: 18px;
+}
+
+.student-group-header p {
+    margin: 0;
+    color: #7a8981;
+    font-size: 12px;
+}
+
+
+/* BACK BUTTON */
+
+.back-student-groups {
+    padding: 9px 15px;
+
+    border: 1px solid #d0e0d6;
+    border-radius: 7px;
+
+    background: #ffffff;
+    color: #315c47;
+
+    font-family: inherit;
+    font-size: 12px;
+    font-weight: 600;
+
+    cursor: pointer;
+}
+
+.back-student-groups:hover {
+    background: #e5f0e8;
+}
+
+
+/* STUDENT TABLE */
+
+.student-table-container {
+    width: 100%;
+    overflow-x: auto;
+}
+
+.student-table-container table {
+    width: 100%;
+    border-collapse: collapse;
+}
+
+.student-table-container th {
+    padding: 14px 16px;
+
+    background: #f7faf8;
+
+    color: #315c47;
+
+    font-size: 12px;
+    font-weight: 700;
+
+    text-align: left;
+
+    border-bottom: 1px solid #e2ebe5;
+}
+
+.student-table-container td {
+    padding: 14px 16px;
+
+    color: #526159;
+
+    font-size: 13px;
+
+    border-bottom: 1px solid #edf1ee;
+}
+
+.student-table-container tbody tr:hover {
+    background: #f8faf9;
+}
+
+
+/* EMPTY STUDENT LIST */
+
+.empty-student-row td {
+    padding: 40px 20px;
+
+    text-align: center;
+
+    color: #89968f;
+
+    font-size: 13px;
+    font-style: italic;
+}
+
+
+/* RESPONSIVE */
+
+@media (max-width: 900px) {
+
+    .student-category-grid {
+        grid-template-columns: repeat(2, 1fr);
+    }
+
+}
+
+@media (max-width: 600px) {
+
+    .student-category-grid {
+        grid-template-columns: 1fr;
+    }
+
+    .student-group-header {
+        align-items: flex-start;
+        flex-direction: column;
+        gap: 15px;
+    }
+
+}
+
+
+
+/* ==========================================
+   ATTENDANCE REPORTS
+========================================== */
+
+/* ==========================================
+   REPORT CONTROL CARD
+========================================== */
+
+.report-control-card {
+    background: #ffffff;
+
+    border: 1px solid #e2ebe5;
+    border-radius: 15px;
+
+    overflow: hidden;
+
+    margin-bottom: 28px;
+
+    box-shadow:
+        0 4px 15px rgba(0, 0, 0, 0.03);
+}
+
+
+/* ==========================================
+   REPORT CONTROL HEADER
+========================================== */
+
+.report-control-header {
+    padding: 24px 26px;
+
+    background: #edf5ef;
+
+    border-bottom: 1px solid #dce9df;
+}
+
+.report-control-header h3 {
+    margin: 0 0 6px 0;
+
+    color: #315c47;
+
+    font-size: 18px;
+    font-weight: 700;
+}
+
+.report-control-header p {
+    margin: 0;
+
+    color: #7a8981;
+
+    font-size: 13px;
+
+    line-height: 1.5;
+}
+
+
+/* ==========================================
+   REPORT CONTROLS
+========================================== */
+
+.report-controls {
+    display: grid;
+
+    grid-template-columns:
+        minmax(180px, 1fr)
+        minmax(220px, 1.4fr)
+        auto;
+
+    align-items: end;
+
+    gap: 20px;
+
+    padding: 24px 26px;
+}
+
+.report-form-group {
+    min-width: 0;
+}
+
+.report-form-group label {
+    display: block;
+
+    margin-bottom: 8px;
+
+    color: #315c47;
+
+    font-size: 13px;
+    font-weight: 600;
+}
+
+.report-form-group input,
+.report-form-group select {
+    width: 100%;
+
+    box-sizing: border-box;
+
+    padding: 12px 13px;
+
+    border: 1px solid #d7e3db;
+
+    border-radius: 9px;
+
+    background: #ffffff;
+
+    color: #26332d;
+
+    font-family: inherit;
+
+    font-size: 13px;
+
+    outline: none;
+
+    transition:
+        border-color 0.2s ease,
+        box-shadow 0.2s ease,
+        background 0.2s ease;
+}
+
+.report-form-group input:hover,
+.report-form-group select:hover {
+    border-color: #b8cfc0;
+}
+
+.report-form-group input:focus,
+.report-form-group select:focus {
+    border-color: #4f8064;
+
+    background: #ffffff;
+
+    box-shadow:
+        0 0 0 3px rgba(79, 128, 100, 0.10);
+}
+
+
+/* ==========================================
+   GENERATE BUTTON
+========================================== */
+
+.generate-report-button {
+    min-height: 42px;
+
+    padding: 0 20px;
+
+    border: none;
+
+    border-radius: 9px;
+
+    background: #4f8064;
+
+    color: #ffffff;
+
+    font-family: inherit;
+
+    font-size: 13px;
+    font-weight: 600;
+
+    cursor: pointer;
+
+    white-space: nowrap;
+
+    transition:
+        background 0.2s ease,
+        transform 0.2s ease,
+        box-shadow 0.2s ease;
+}
+
+.generate-report-button:hover {
+    background: #3f6d53;
+
+    transform: translateY(-1px);
+
+    box-shadow:
+        0 5px 12px rgba(63, 109, 83, 0.16);
+}
+
+.generate-report-button:active {
+    transform: translateY(0);
+
+    box-shadow: none;
+}
+
+
+/* ==========================================
+   ATTENDANCE REPORT CONTAINER
+========================================== */
+
+.attendance-report {
+    background: #ffffff;
+
+    border: 1px solid #e2ebe5;
+
+    border-radius: 15px;
+
+    overflow: hidden;
+
+    box-shadow:
+        0 4px 15px rgba(0, 0, 0, 0.03);
+}
+
+
+/* ==========================================
+   REPORT HEADER
+========================================== */
+
+.report-header {
+    display: flex;
+
+    justify-content: space-between;
+
+    align-items: center;
+
+    gap: 20px;
+
+    padding: 25px 26px;
+
+    background: #ffffff;
+
+    border-bottom: 1px solid #e2ebe5;
+}
+
+.report-header h3 {
+    margin: 0 0 6px 0;
+
+    color: #7a8981;
+
+    font-size: 12px;
+
+    font-weight: 700;
+
+    text-transform: uppercase;
+
+    letter-spacing: 0.5px;
+}
+
+.report-header h2 {
+    margin: 0 0 6px 0;
+
+    color: #26332d;
+
+    font-family: Georgia, serif;
+
+    font-size: 22px;
+}
+
+.report-header p {
+    margin: 0;
+
+    color: #7a8981;
+
+    font-size: 12px;
+
+    line-height: 1.5;
+}
+
+
+/* ==========================================
+   PRINT BUTTON
+========================================== */
+
+.print-report-button {
+    padding: 10px 17px;
+
+    border: 1px solid #d0e0d6;
+
+    border-radius: 9px;
+
+    background: #edf5ef;
+
+    color: #315c47;
+
+    font-family: inherit;
+
+    font-size: 12px;
+    font-weight: 600;
+
+    cursor: pointer;
+
+    white-space: nowrap;
+
+    transition:
+        background 0.2s ease,
+        border-color 0.2s ease,
+        transform 0.2s ease;
+}
+
+.print-report-button:hover {
+    background: #e1eee5;
+
+    border-color: #bcd4c4;
+
+    transform: translateY(-1px);
+}
+
+.print-report-button:active {
+    transform: translateY(0);
+}
+
+
+/* ==========================================
+   REPORT SUMMARY CARDS
+========================================== */
+
+.report-summary {
+    display: grid;
+
+    grid-template-columns:
+        repeat(4, minmax(0, 1fr));
+
+    gap: 16px;
+
+    padding: 24px 26px;
+
+    background: #ffffff;
+
+    border-bottom: 1px solid #e2ebe5;
+}
+
+.report-summary-item {
+    position: relative;
+
+    min-height: 88px;
+
+    padding: 18px 19px;
+
+    background: #f8faf9;
+
+    border: 1px solid #e2ebe5;
+
+    border-radius: 11px;
+
+    transition:
+        transform 0.2s ease,
+        box-shadow 0.2s ease,
+        border-color 0.2s ease;
+}
+
+.report-summary-item:hover {
+    transform: translateY(-2px);
+
+    border-color: #d2e2d8;
+
+    box-shadow:
+        0 5px 14px rgba(0, 0, 0, 0.04);
+}
+
+.report-summary-item span {
+    display: block;
+
+    margin-bottom: 9px;
+
+    color: #7a8981;
+
+    font-size: 11px;
+
+    font-weight: 600;
+
+    text-transform: uppercase;
+
+    letter-spacing: 0.4px;
+}
+
+.report-summary-item strong {
+    display: block;
+
+    color: #315c47;
+
+    font-size: 25px;
+
+    line-height: 1;
+}
+
+
+/* ==========================================
+   REPORT TABLE WRAPPER
+========================================== */
+
+.report-table-container {
+    width: 100%;
+
+    overflow-x: auto;
+
+    overflow-y: visible;
+
+    padding-bottom: 4px;
+
+    scrollbar-width: thin;
+
+    scrollbar-color: #b8cfc0 #f1f5f3;
+}
+
+
+/* Custom horizontal scrollbar */
+
+.report-table-container::-webkit-scrollbar {
+    height: 8px;
+}
+
+.report-table-container::-webkit-scrollbar-track {
+    background: #f1f5f3;
+}
+
+.report-table-container::-webkit-scrollbar-thumb {
+    background: #b8cfc0;
+
+    border-radius: 10px;
+}
+
+.report-table-container::-webkit-scrollbar-thumb:hover {
+    background: #8fae9a;
+}
+
+
+/* ==========================================
+   REPORT TABLE
+========================================== */
+
+.report-table-container table {
+    width: 100%;
+
+    min-width: 1100px;
+
+    border-collapse: separate;
+
+    border-spacing: 0;
+}
+
+
+/* ==========================================
+   TABLE HEADER
+========================================== */
+
+.report-table-container th {
+    position: sticky;
+
+    top: 0;
+
+    z-index: 5;
+
+    padding: 14px 12px;
+
+    background: #edf5ef;
+
+    color: #315c47;
+
+    font-size: 11px;
+
+    font-weight: 700;
+
+    text-align: center;
+
+    white-space: nowrap;
+
+    border-bottom: 1px solid #d5e3da;
+
+    border-right: 1px solid #e3ece6;
+}
+
+.report-table-container th:last-child {
+    border-right: none;
+}
+
+
+/* ==========================================
+   STUDENT INFORMATION COLUMNS
+========================================== */
+
+.report-table-container th:first-child,
+.report-table-container td:first-child {
+    padding-left: 20px;
+
+    text-align: left;
+}
+
+.report-table-container th:nth-child(2),
+.report-table-container td:nth-child(2) {
+    text-align: left;
+}
+
+
+/* ==========================================
+   DAILY DATE COLUMNS
+========================================== */
+
+.report-table-container th:nth-child(n+4):not(:nth-last-child(-n+3)) {
+    min-width: 42px;
+}
+
+
+/* ==========================================
+   TABLE BODY
+========================================== */
+
+.report-table-container td {
+    padding: 13px 12px;
+
+    color: #526159;
+
+    font-size: 12px;
+
+    text-align: center;
+
+    white-space: nowrap;
+
+    border-bottom: 1px solid #edf1ee;
+
+    border-right: 1px solid #f0f3f1;
+
+    background: #ffffff;
+}
+
+.report-table-container td:last-child {
+    border-right: none;
+}
+
+
+/* Student name */
+
+.report-table-container td:nth-child(2) {
+    color: #26332d;
+
+    font-weight: 600;
+
+    text-align: left;
+}
+
+
+/* RFID */
+
+.report-table-container td:first-child {
+    color: #6f7e76;
+
+    font-family: monospace;
+
+    font-size: 11px;
+
+    text-align: left;
+}
+
+
+/* Grade / Section */
+
+.report-table-container td:nth-child(3) {
+    color: #607068;
+
+    text-align: left;
+}
+
+
+/* ==========================================
+   TABLE ROW HOVER
+========================================== */
+
+.report-table-container tbody tr {
+    transition: background 0.15s ease;
+}
+
+.report-table-container tbody tr:hover td {
+    background: #f7faf8;
+}
+
+
+/* ==========================================
+   ATTENDANCE MARKS
+========================================== */
+
+/*
+   These styles work with plain P / L / A / —
+   values generated by your JavaScript.
+*/
+
+.report-table-container td {
+    font-weight: 600;
+}
+
+
+/* Present */
+
+.report-table-container td:has(> .present),
+.report-table-container .present {
+    color: #39704d;
+}
+
+
+/* Late */
+
+.report-table-container td:has(> .late),
+.report-table-container .late {
+    color: #a46b1c;
+}
+
+
+/* Absent */
+
+.report-table-container td:has(> .absent),
+.report-table-container .absent {
+    color: #a64b4b;
+}
+
+
+/* Empty / future day */
+
+.report-table-container td:has(> .empty),
+.report-table-container .empty {
+    color: #b0bab4;
+}
+
+
+/* ==========================================
+   TOTAL COLUMNS
+========================================== */
+
+.report-table-container th:nth-last-child(3),
+.report-table-container th:nth-last-child(2),
+.report-table-container th:nth-last-child(1) {
+    min-width: 65px;
+
+    background: #e6f0e9;
+}
+
+.report-table-container td:nth-last-child(3),
+.report-table-container td:nth-last-child(2),
+.report-table-container td:nth-last-child(1) {
+    font-weight: 700;
+
+    background: #fbfcfb;
+}
+
+
+/* ==========================================
+   EMPTY REPORT
+========================================== */
+
+.empty-report-row td {
+    padding: 55px 20px;
+
+    text-align: center;
+
+    color: #89968f;
+
+    font-size: 13px;
+
+    font-style: italic;
+
+    background: #ffffff;
+}
+
+
+/* ==========================================
+   REPORT RESPONSIVE DESIGN
+========================================== */
+
+@media (max-width: 1000px) {
+
+    .report-controls {
+        grid-template-columns: 1fr 1fr;
+    }
+
+    .generate-report-button {
+        width: 100%;
+    }
+
+    .report-summary {
+        grid-template-columns:
+            repeat(2, minmax(0, 1fr));
+    }
+
+}
+
+
+@media (max-width: 700px) {
+
+    .report-controls {
+        grid-template-columns: 1fr;
+
+        gap: 16px;
+
+        padding: 20px;
+    }
+
+    .report-control-header {
+        padding: 20px;
+    }
+
+    .report-header {
+        align-items: flex-start;
+
+        flex-direction: column;
+
+        padding: 20px;
+    }
+
+    .print-report-button {
+        width: 100%;
+    }
+
+    .report-summary {
+        grid-template-columns: 1fr;
+
+        padding: 20px;
+
+        gap: 12px;
+    }
+
+    .report-summary-item {
+        min-height: auto;
+    }
+
+}
+
+
+/* ==========================================
+   A4 LANDSCAPE PRINT ATTENDANCE SHEET
+========================================== */
+
+.print-only-header {
+    display: none;
+}
+
+
+@media print {
+
+    /* ------------------------------------------
+       A4 LANDSCAPE PAGE
+    ------------------------------------------ */
+
+    @page {
+        size: A4 landscape;
+        margin: 8mm;
+    }
+
+
+    /* ------------------------------------------
+       GENERAL PRINT SETTINGS
+    ------------------------------------------ */
+
+    * {
+        box-sizing: border-box;
+    }
+
+    html,
+    body {
+        width: 100%;
+        min-width: 0;
+        margin: 0;
+        padding: 0;
+        background: #ffffff !important;
+        color: #000000 !important;
+    }
+
+
+    /* ------------------------------------------
+       HIDE DASHBOARD UI
+    ------------------------------------------ */
+
+    .sidebar,
+    .header,
+    .cards,
+    .report-control-card,
+    .print-report-button,
+    .section-title {
+        display: none !important;
+    }
+
+
+    /* ------------------------------------------
+       MAIN CONTENT
+    ------------------------------------------ */
+
+    .main-content {
+        margin: 0 !important;
+        padding: 0 !important;
+        width: 100% !important;
+    }
+
+
+    .section {
+        display: none !important;
+    }
+
+
+    #reports {
+        display: block !important;
+        width: 100% !important;
+        margin: 0 !important;
+        padding: 0 !important;
+    }
+
+
+    #attendanceReport {
+        display: block !important;
+        width: 100% !important;
+        margin: 0 !important;
+        padding: 0 !important;
+        border: none !important;
+        border-radius: 0 !important;
+        box-shadow: none !important;
+        background: #ffffff !important;
+    }
+
+
+    /* ------------------------------------------
+       PRINT HEADER
+    ------------------------------------------ */
+
+    .print-only-header {
+        display: block !important;
+        width: 100%;
+        text-align: center;
+        margin-bottom: 7mm;
+        color: #000000 !important;
+    }
+
+
+    .print-only-header h1 {
+        margin: 0;
+        font-family: Arial, sans-serif;
+        font-size: 15pt;
+        font-weight: 700;
+        letter-spacing: 0.3px;
+    }
+
+
+    .print-only-header h2 {
+        margin: 2mm 0 3mm;
+        font-family: Arial, sans-serif;
+        font-size: 12pt;
+        font-weight: 700;
+        letter-spacing: 0.5px;
+    }
+
+
+    .print-report-info {
+        display: flex;
+        justify-content: center;
+        gap: 35mm;
+        font-family: Arial, sans-serif;
+        font-size: 9pt;
+    }
+
+
+    .print-report-info span {
+        color: #000000 !important;
+    }
+
+
+    /* ------------------------------------------
+       HIDE NORMAL REPORT HEADER
+    ------------------------------------------ */
+
+    .report-header {
+        display: none !important;
+    }
+
+
+    /* ------------------------------------------
+       HIDE SUMMARY CARDS
+       The actual attendance sheet will contain
+       the student-by-student totals instead.
+    ------------------------------------------ */
+
+    .report-summary {
+        display: none !important;
+    }
+
+
+    /* ------------------------------------------
+       REPORT TABLE
+    ------------------------------------------ */
+
+    .report-table-container {
+        width: 100% !important;
+        overflow: visible !important;
+        margin: 0 !important;
+        padding: 0 !important;
+    }
+
+
+    .report-table-container table {
+        width: 100% !important;
+        min-width: 0 !important;
+        max-width: 100% !important;
+        table-layout: fixed !important;
+        border-collapse: collapse !important;
+        border-spacing: 0 !important;
+        font-family: Arial, sans-serif;
+    }
+
+
+    /* ------------------------------------------
+       TABLE HEADER
+    ------------------------------------------ */
+
+    .report-table-container th {
+        height: 9mm;
+        padding: 2mm 1mm !important;
+
+        background: #ffffff !important;
+        color: #000000 !important;
+
+        border: 1px solid #000000 !important;
+
+        font-family: Arial, sans-serif;
+        font-size: 7pt !important;
+        font-weight: 700;
+
+        text-align: center !important;
+        vertical-align: middle;
+
+        white-space: normal !important;
+        line-height: 1.1;
+    }
+
+
+    /* ------------------------------------------
+       TABLE CELLS
+    ------------------------------------------ */
+
+    .report-table-container td {
+        height: 8mm;
+        padding: 1.5mm 1mm !important;
+
+        background: #ffffff !important;
+        color: #000000 !important;
+
+        border: 1px solid #000000 !important;
+
+        font-family: Arial, sans-serif;
+        font-size: 7pt !important;
+
+        text-align: center;
+        vertical-align: middle;
+
+        white-space: nowrap !important;
+    }
+
+
+    /* ------------------------------------------
+       STUDENT INFORMATION COLUMNS
+    ------------------------------------------ */
+
+    .report-table-container th:nth-child(1),
+    .report-table-container td:nth-child(1) {
+        width: 30mm;
+        text-align: center !important;
+    }
+
+
+    .report-table-container th:nth-child(2),
+    .report-table-container td:nth-child(2) {
+        width: 52mm;
+        text-align: left !important;
+        padding-left: 2mm !important;
+    }
+
+
+    .report-table-container th:nth-child(3),
+    .report-table-container td:nth-child(3) {
+        width: 27mm;
+        text-align: center !important;
+    }
+
+
+    /* ------------------------------------------
+       ATTENDANCE DAY COLUMNS
+    ------------------------------------------ */
+
+    .report-table-container th:nth-child(n+4):not(:nth-last-child(-n+3)),
+    .report-table-container td:nth-child(n+4):not(:nth-last-child(-n+3)) {
+        width: 5.3mm;
+        min-width: 5.3mm;
+        max-width: 5.3mm;
+        padding: 1mm 0 !important;
+        text-align: center !important;
+    }
+
+
+    /* ------------------------------------------
+       PRESENT / LATE / ABSENT TOTAL COLUMNS
+    ------------------------------------------ */
+
+    .report-table-container th:nth-last-child(3),
+    .report-table-container td:nth-last-child(3),
+    .report-table-container th:nth-last-child(2),
+    .report-table-container td:nth-last-child(2),
+    .report-table-container th:nth-last-child(1),
+    .report-table-container td:nth-last-child(1) {
+        width: 10mm;
+        text-align: center !important;
+        font-weight: 700;
+    }
+
+
+    /* ------------------------------------------
+       REMOVE HOVER EFFECT
+    ------------------------------------------ */
+
+    .report-table-container tbody tr:hover {
+        background: #ffffff !important;
+    }
+
+
+    /* ------------------------------------------
+       EMPTY REPORT
+    ------------------------------------------ */
+
+    .empty-report-row td {
+        padding: 10mm !important;
+        text-align: center !important;
+        font-size: 9pt !important;
+        font-style: normal !important;
+    }
+
+
+    /* ------------------------------------------
+       PRINT FOOTER
+    ------------------------------------------ */
+
+    #attendanceReport::after {
+        content:
+            "Prepared by: ________________________________     "
+            "Checked by: ________________________________";
+
+        display: block;
+
+        margin-top: 12mm;
+
+        font-family: Arial, sans-serif;
+        font-size: 9pt;
+
+        color: #000000;
+
+        text-align: left;
+
+        white-space: pre-wrap;
+    }
+
+
+    /* ------------------------------------------
+       PREVENT ROW SPLITTING
+    ------------------------------------------ */
+
+    .report-table-container tr {
+        page-break-inside: avoid;
+        break-inside: avoid;
+    }
+
+
+    .report-table-container thead {
+        display: table-header-group;
+    }
+
+
+    .report-table-container tbody {
+        display: table-row-group;
+    }
+
+}
+/* =================================
+   SETTINGS
+================================= */
+
+.settings-card {
+    background: #ffffff;
+    border: 1px solid #e2ebe5;
+    border-radius: 13px;
+    overflow: hidden;
+    margin-bottom: 20px;
+}
+
+.settings-card-header {
+    padding: 20px 22px;
+    background: #edf5ef;
+    border-bottom: 1px solid #dce9df;
+}
+
+.settings-card-header h3 {
+    margin: 0 0 5px 0;
+    color: #315c47;
+    font-size: 17px;
+}
+
+.settings-card-header p {
+    margin: 0;
+    color: #7a8981;
+    font-size: 12px;
+}
+
+.settings-card-body {
+    padding: 22px;
+    max-width: 650px;
+}
+
+.settings-form-group {
+    margin-bottom: 18px;
+}
+
+.settings-form-group label {
+    display: block;
+    margin-bottom: 7px;
+    color: #315c47;
+    font-size: 13px;
+    font-weight: 600;
+}
+
+.settings-form-group input,
+.settings-form-group select {
+    width: 100%;
+    box-sizing: border-box;
+    padding: 11px 12px;
+    border: 1px solid #d7e3db;
+    border-radius: 8px;
+    background: #ffffff;
+    color: #26332d;
+    font-family: inherit;
+    font-size: 13px;
+    outline: none;
+}
+
+.settings-form-group select {
+    cursor: pointer;
+}
+
+.settings-form-group textarea {
+    width: 100%;
+    box-sizing: border-box;
+    padding: 11px 12px;
+    border: 1px solid #d7e3db;
+    border-radius: 8px;
+    background: #ffffff;
+    color: #26332d;
+    font-family: inherit;
+    font-size: 13px;
+    line-height: 1.5;
+    outline: none;
+    resize: vertical;
+}
+
+.settings-form-group input:focus,
+.settings-form-group select:focus {
+    border-color: #4f8064;
+    box-shadow: 0 0 0 3px rgba(79, 128, 100, 0.10);
+}
+
+.settings-form-group textarea:focus {
+    border-color: #4f8064;
+    box-shadow: 0 0 0 3px rgba(79, 128, 100, 0.10);
+}
+
+.settings-form-group small {
+    display: block;
+    margin-top: 6px;
+    color: #89968f;
+    font-size: 11px;
+}
+
+.sms-template-help {
+    display: block;
+    margin: -8px 0 18px;
+    color: #89968f;
+    font-size: 11px;
+}
+
+/* PASSWORD INPUT */
+
+.password-input-wrapper {
+    position: relative;
+    display: flex;
+    align-items: center;
+}
+
+.password-input-wrapper input {
+    padding-right: 70px;
+}
+
+.settings-password-toggle {
+    position: absolute;
+    right: 8px;
+    border: none;
+    background: transparent;
+    color: #4f8064;
+    font-family: inherit;
+    font-size: 11px;
+    font-weight: 600;
+    cursor: pointer;
+}
+
+.settings-password-toggle:hover {
+    color: #315c47;
+}
+
+/* CHANGE PASSWORD BUTTON */
+
+.settings-form-actions {
+    margin-top: 8px;
+}
+
+.change-password-button {
+    padding: 11px 18px;
+    border: none;
+    border-radius: 8px;
+    background: #4f8064;
+    color: #ffffff;
+    font-family: inherit;
+    font-size: 13px;
+    font-weight: 600;
+    cursor: pointer;
+    transition: background 0.2s ease;
+}
+
+.change-password-button:hover {
+    background: #3f6d53;
+}
+
+.sms-checkbox-group {
+    display: grid;
+    gap: 12px;
+    margin: 8px 0 20px;
+}
+
+.sms-checkbox-group label {
+    display: flex;
+    align-items: center;
+    gap: 9px;
+    color: #315c47;
+    font-size: 13px;
+    font-weight: 600;
+}
+
+.sms-checkbox-group input {
+    width: 16px;
+    height: 16px;
+    accent-color: #4f8064;
+}
+
+.sms-test-area {
+    max-width: 650px;
+    margin-top: 24px;
+    padding-top: 20px;
+    border-top: 1px solid #e2ebe5;
+}
+
+.sms-test-area > label {
+    display: block;
+    margin-bottom: 8px;
+    color: #315c47;
+    font-size: 13px;
+    font-weight: 600;
+}
+
+.sms-test-controls {
+    display: flex;
+    gap: 10px;
+}
+
+.sms-test-controls input {
+    min-width: 0;
+    flex: 1;
+    padding: 11px 12px;
+    border: 1px solid #d7e3db;
+    border-radius: 8px;
+    color: #26332d;
+    font: inherit;
+}
+
+.sms-test-area > small {
+    display: block;
+    margin-top: 8px;
+    color: #89968f;
+    font-size: 11px;
+}
+
+.sms-settings-message {
+    padding: 11px 13px;
+    margin: 12px 0;
+    border-radius: 8px;
+    background: #edf5ef;
+    color: #315c47;
+    font-size: 12px;
+    line-height: 1.5;
+}
+
+.sms-send-modal[hidden] {
+    display: none;
+}
+
+.sms-send-modal {
+    position: fixed;
+    inset: 0;
+    z-index: 2000;
+    display: grid;
+    place-items: center;
+    padding: 20px;
+    background: rgba(8, 12, 34, 0.72);
+}
+
+.sms-send-dialog {
+    width: min(100%, 440px);
+    padding: 24px;
+    border: 1px solid #dce7e0;
+    border-radius: 12px;
+    background: #fff;
+    box-shadow: 0 18px 48px rgba(0, 0, 0, 0.25);
+}
+
+.sms-send-dialog h2 {
+    margin-bottom: 10px;
+    color: #183b2a;
+    font-size: 20px;
+}
+
+.sms-send-dialog p {
+    color: #53645a;
+    font-size: 14px;
+    line-height: 1.55;
+}
+
+.sms-send-result {
+    margin-top: 14px;
+    padding: 10px 12px;
+    border-radius: 8px;
+    border: 1px solid transparent;
+    font-weight: 600;
+}
+
+.sms-send-result[data-state="success"] {
+    background: #edf5ef;
+    border-color: #b8d7c2;
+    color: #24583a;
+}
+
+.sms-send-result[data-state="error"] {
+    background: #fff0f0;
+    border-color: #e7b5b5;
+    color: #8a2626;
+}
+
+.sms-send-result[data-state="unknown"] {
+    background: #fff8e5;
+    border-color: #efd58a;
+    color: #765b11;
+}
+
+/* MESSAGE */
+
+.change-password-message {
+    padding: 11px 13px;
+    margin-bottom: 15px;
+    border-radius: 8px;
+    font-size: 12px;
+    line-height: 1.5;
+}
+
+/* ADMINISTRATIVE CODE INFORMATION */
+
+.settings-info-card {
+    display: flex;
+    align-items: flex-start;
+    gap: 15px;
+    background: #f7faf8;
+    border: 1px solid #e2ebe5;
+    border-radius: 13px;
+    padding: 18px 20px;
+    margin-bottom: 20px;
+}
+
+.settings-info-icon {
+    width: 38px;
+    height: 38px;
+    flex-shrink: 0;
+    display: flex;
+    align-items: center;
+    justify-content: center;
+    background: #edf5ef;
+    border-radius: 9px;
+    font-size: 18px;
+}
+
+.settings-info-card h3 {
+    margin: 0 0 6px 0;
+    color: #315c47;
+    font-size: 14px;
+}
+
+.settings-info-card p {
+    margin: 0 0 6px 0;
+    color: #7a8981;
+    font-size: 12px;
+    line-height: 1.6;
+}
+
+.settings-info-card p:last-child {
+    margin-bottom: 0;
+}
+
+/* MOBILE */
+
+@media (max-width: 650px) {
+
+    .settings-card-body {
+        padding: 18px;
+    }
+
+    .change-password-button {
+        width: 100%;
+    }
+
+    .settings-info-card {
+        flex-direction: column;
+    }
+
+}
+
+/* =================================
+   RFID SCANNER
+================================= */
+
+.rfid-scanner-card {
+    background: #ffffff;
+    border: 1px solid #e2ebe5;
+    border-radius: 13px;
+    overflow: hidden;
+    margin-bottom: 22px;
+}
+
+.rfid-scanner-header {
+    display: flex;
+    align-items: center;
+    gap: 15px;
+    padding: 22px;
+    background: #edf5ef;
+    border-bottom: 1px solid #dce9df;
+}
+
+.rfid-scanner-icon {
+    width: 48px;
+    height: 48px;
+    display: flex;
+    align-items: center;
+    justify-content: center;
+    background: #ffffff;
+    border: 1px solid #d7e3db;
+    border-radius: 11px;
+    font-size: 24px;
+}
+
+.rfid-scanner-header h3 {
+    margin: 0 0 5px 0;
+    color: #315c47;
+    font-size: 17px;
+}
+
+.rfid-scanner-header p {
+    margin: 0;
+    color: #7a8981;
+    font-size: 12px;
+}
+
+
+/* =================================
+   SCANNER STATUS
+================================= */
+
+.rfid-scanner-status {
+    display: flex;
+    align-items: center;
+    gap: 9px;
+    padding: 14px 22px;
+    border-bottom: 1px solid #edf1ee;
+}
+
+.scanner-status-indicator {
+    width: 9px;
+    height: 9px;
+    border-radius: 50%;
+    background: #4f8064;
+}
+
+.rfid-scanner-status span {
+    color: #526159;
+    font-size: 12px;
+    font-weight: 600;
+}
+
+
+/* =================================
+   RFID INPUT
+================================= */
+
+.rfid-scan-area {
+    padding: 25px 22px;
+}
+
+.rfid-scan-area label {
+    display: block;
+    margin-bottom: 8px;
+    color: #315c47;
+    font-size: 13px;
+    font-weight: 600;
+}
+
+.rfid-scan-area input {
+    width: 100%;
+    box-sizing: border-box;
+    padding: 16px;
+    border: 2px solid #d7e3db;
+    border-radius: 10px;
+    background: #ffffff;
+    color: #26332d;
+    font-family: inherit;
+    font-size: 16px;
+    text-align: center;
+    outline: none;
+    transition: border-color 0.2s ease, box-shadow 0.2s ease;
+}
+
+.rfid-scan-area input:focus {
+    border-color: #4f8064;
+    box-shadow: 0 0 0 4px rgba(79, 128, 100, 0.10);
+}
+
+.rfid-scan-area input::placeholder {
+    color: #a0aaa4;
+}
+
+.rfid-scan-area small {
+    display: block;
+    margin-top: 8px;
+    color: #89968f;
+    font-size: 11px;
+    text-align: center;
+}
+
+
+/* =================================
+   LAST SCAN
+================================= */
+
+.last-scan-card {
+    display: grid;
+    grid-template-columns: 1fr 1fr;
+    gap: 15px;
+    padding: 0 22px 22px 22px;
+}
+
+.last-scan-card > div {
+    padding: 16px;
+    background: #f7faf8;
+    border: 1px solid #e2ebe5;
+    border-radius: 9px;
+}
+
+.last-scan-card span {
+    display: block;
+    margin-bottom: 7px;
+    color: #7a8981;
+    font-size: 11px;
+}
+
+.last-scan-card strong {
+    color: #315c47;
+    font-size: 15px;
+}
+
+
+/* =================================
+   SCANNED STUDENT
+================================= */
+
+.scanned-student-card {
+    margin: 0 22px 22px 22px;
+    border: 1px solid #dce9df;
+    border-radius: 10px;
+    overflow: hidden;
+}
+
+.scanned-student-header {
+    padding: 14px 16px;
+    background: #edf5ef;
+    border-bottom: 1px solid #dce9df;
+}
+
+.scanned-student-header h3 {
+    margin: 0;
+    color: #315c47;
+    font-size: 14px;
+}
+
+.scanned-student-details {
+    display: grid;
+    grid-template-columns: repeat(2, 1fr);
+    gap: 1px;
+    background: #e2ebe5;
+}
+
+.scanned-student-details > div {
+    padding: 15px;
+    background: #ffffff;
+}
+
+.scanned-student-details span {
+    display: block;
+    margin-bottom: 5px;
+    color: #89968f;
+    font-size: 11px;
+}
+
+.scanned-student-details strong {
+    color: #26332d;
+    font-size: 13px;
+}
+
+
+/* =================================
+   MOBILE
+================================= */
+
+@media (max-width: 650px) {
+
+    .last-scan-card {
+        grid-template-columns: 1fr;
+    }
+
+    .scanned-student-details {
+        grid-template-columns: 1fr;
+    }
+
+}   
+
+
+
+/* =========================================
+   HOME PAGE — MATCH AUTH THEME
+========================================= */
+
+body {
+    font-family: Arial, Helvetica, sans-serif;
+    background: linear-gradient(
+        179deg,
+        #020024 1%,
+        #090979 30%,
+        #056DBB 67%,
+        #0066FF 100%
+    );
+    color: #FFFFFF;
+}
+
+/* Navigation */
+
+nav,
+.navbar,
+header {
+    border-color: #26396B;
+}
+
+nav,
+.navbar {
+    background: #020024;
+}
+
+nav a,
+.navbar a {
+    color: #FFFFFF;
+    transition: color 0.2s ease;
+}
+
+nav a:hover,
+.navbar a:hover {
+    color: #7B9FF2;
+}
+
+/* Main content cards */
+
+.container,
+.content,
+.card,
+.home-card,
+section {
+    border-color: #26396B;
+}
+
+/* Headings */
+
+h1,
+h2,
+h3 {
+    color: #FFFFFF;
+}
+
+/* Paragraphs */
+
+p {
+    color: #DCE7FF;
+}
+
+/* Buttons */
+
+button,
+.btn,
+.button,
+input[type="submit"] {
+    background: linear-gradient(120deg, #090979, #0047AB);
+    color: #FFFFFF;
+    border: 1px solid #2C74B3;
+    border-radius: 8px;
+    cursor: pointer;
+    transition: background 0.2s ease;
+}
+
+button:hover,
+.btn:hover,
+.button:hover,
+input[type="submit"]:hover {
+    background: linear-gradient(120deg, #0047AB, #056DBB);
+}
+
+/* Links */
+
+a {
+    color: #7B9FF2;
+}
+
+a:hover {
+    color: #FFFFFF;
+}
+
+/* Inputs */
+
+input,
+select,
+textarea {
+    border: 1px solid #C9D7F5;
+    border-radius: 8px;
+    color: #17213D;
+    background: #FFFFFF;
+}
+
+input:focus,
+select:focus,
+textarea:focus {
+    outline: none;
+    border-color: #056DBB;
+    box-shadow: 0 0 0 3px rgba(5, 109, 187, 0.15);
+}
+
+
+
+/* =========================================
+   NAVY BLUE THEME
+   Matches Login and Registration
+   Paste at the VERY BOTTOM of dashboard CSS
+========================================= */
+
+:root {
+    --navy-black: #020024;
+    --deep-blue: #090979;
+    --dark-blue: #091540;
+    --royal-blue: #0047AB;
+    --bright-blue: #056DBB;
+    --light-blue: #7B9FF2;
+    --pale-blue: #EDF2FF;
+    --border-blue: #26396B;
+    --white: #FFFFFF;
+    --text-dark: #17213D;
+    --text-muted: #7885A5;
+}
+
+/* PAGE BACKGROUND */
+
+body {
+    background: linear-gradient(
+        179deg,
+        #020024 1%,
+        #090979 30%,
+        #056DBB 67%,
+        #0066FF 100%
+    );
+    color: var(--text-dark);
+}
+
+/* SIDEBAR */
+
+.sidebar {
+    background: linear-gradient(
+        180deg,
+        #020024 0%,
+        #090979 55%,
+        #091540 100%
+    );
+    border-right: 1px solid var(--border-blue);
+    box-shadow: 4px 0 18px rgba(2, 0, 36, 0.25);
+}
+
+.sidebar::-webkit-scrollbar-track,
+::-webkit-scrollbar-track {
+    background: #091540;
+}
+
+.sidebar::-webkit-scrollbar-thumb,
+::-webkit-scrollbar-thumb {
+    background: #2C74B3;
+}
+
+.sidebar::-webkit-scrollbar-thumb:hover,
+::-webkit-scrollbar-thumb:hover {
+    background: #056DBB;
+}
+
+/* LOGO */
+
+.logo {
+    border-bottom-color: var(--border-blue);
+}
+
+.logo h1,
+.logo p {
+    color: var(--white);
+}
+
+/* SIDEBAR LINKS */
+
+.sidebar > a,
+.dropdown-button {
+    color: #DCE7FF;
+}
+
+.sidebar > a:hover,
+.dropdown-button:hover {
+    background: #17377D;
+    color: var(--white);
+}
+
+.sidebar > a.active,
+.dropdown-button.active {
+    background: #0047AB;
+    color: var(--white);
+}
+
+/* DROPDOWN */
+
+.dropdown-content {
+    background: #091540;
+    border-color: var(--border-blue);
+}
+
+.dropdown-content button {
+    color: #DCE7FF;
+}
+
+.dropdown-content button:hover {
+    background: #17377D;
+    color: var(--white);
+}
+
+/* HEADER */
+
+.header {
+    background: linear-gradient(120deg, #020024, #090979);
+    border-color: var(--border-blue);
+    box-shadow: 0 6px 20px rgba(2, 0, 36, 0.2);
+}
+
+.header h1,
+.header p {
+    color: var(--white);
+}
+
+.admin {
+    background: #17377D;
+    border-color: #2C74B3;
+    color: var(--white);
+}
+
+/* DASHBOARD SUMMARY CARDS */
+
+.card {
+    background: linear-gradient(145deg, #091540, #101F59);
+    border-color: #26396B;
+}
+
+.card h3 {
+    color: #DCE7FF;
+}
+
+.card h2 {
+    color: #7B9FF2;
+}
+
+/* MAIN SECTIONS */
+
+.section {
+    background: #091540;
+    border-color: #26396B;
+}
+
+.section h2,
+.section-title h2 {
+    color: var(--white);
+}
+
+.section > p,
+.section-title p {
+    color: #B7C6E8;
+}
+
+/* DASHBOARD DATE */
+
+.dashboard-date {
+    background: #17377D;
+    border-color: #2C74B3;
+    color: var(--white);
+}
+
+/* FORM CARDS AND SETTINGS CARDS */
+
+.student-form-card,
+.settings-card,
+.rfid-scanner-card,
+.student-category-card,
+.student-group-view,
+.report-control-card,
+.attendance-report {
+    background: var(--white);
+    border-color: #C9D7F5;
+}
+
+/* FORM AND SECTION HEADERS */
+
+.form-card-header,
+.settings-card-header,
+.student-category-header,
+.student-group-header,
+.rfid-scanner-header,
+.report-control-header {
+    background: linear-gradient(120deg, #020024, #090979);
+    border-bottom-color: #26396B;
+}
+
+.form-card-header h3,
+.settings-card-header h3,
+.student-category-header h3,
+.student-group-header h3,
+.rfid-scanner-header h3,
+.report-control-header h3 {
+    color: var(--white);
+}
+
+.form-card-header p,
+.settings-card-header p,
+.student-category-header p,
+.student-group-header p,
+.rfid-scanner-header p,
+.report-control-header p {
+    color: #DCE7FF;
+}
+
+/* FORM LABELS */
+
+.form-group label,
+.settings-container label,
+.settings-form-group label,
+.report-form-group label,
+.rfid-scan-area label {
+    color: #22396F;
+}
+
+/* INPUTS */
+
+.form-grid input,
+.form-grid select,
+.settings-container input,
+.form-group input,
+.form-group select,
+.settings-form-group input,
+.report-form-group input,
+.report-form-group select,
+.rfid-scan-area input {
+    border-color: #C9D7F5;
+    background: #FFFFFF;
+    color: #17213D;
+}
+
+.form-grid input:focus,
+.form-grid select:focus,
+.settings-container input:focus,
+.form-group input:focus,
+.form-group select:focus,
+.settings-form-group input:focus,
+.report-form-group input:focus,
+.report-form-group select:focus,
+.rfid-scan-area input:focus {
+    border-color: #056DBB;
+    box-shadow: 0 0 0 3px rgba(5, 109, 187, 0.15);
+}
+
+/* BUTTONS */
+
+.save-button,
+.save-student-btn,
+.settings-button,
+.change-password-button,
+.generate-report-button {
+    background: linear-gradient(120deg, #090979, #0047AB);
+    color: var(--white);
+}
+
+.save-button:hover,
+.save-student-btn:hover,
+.settings-button:hover,
+.change-password-button:hover,
+.generate-report-button:hover {
+    background: linear-gradient(120deg, #0047AB, #056DBB);
+}
+
+/* PASSWORD SHOW/HIDE BUTTON */
+
+.settings-password-toggle {
+    color: #0047AB;
+}
+
+.settings-password-toggle:hover {
+    color: #056DBB;
+}
+
+/* SETTINGS INFORMATION */
+
+.settings-container,
+.settings-info-card,
+.last-scan-card > div,
+.report-summary-item {
+    background: #F1F5FF;
+    border-color: #D6E1FA;
+}
+
+.settings-container h3,
+.settings-info-card h3,
+.last-scan-card strong,
+.report-summary-item strong {
+    color: #22396F;
+}
+
+.settings-container p,
+.settings-info-card p,
+.settings-form-group small {
+    color: #7885A5;
+}
+
+/* TABLES */
+
+.section table,
+.student-table-container table,
+.attendance-table-container table,
+.report-table-container table {
+    background: #FFFFFF;
+    border-color: #C9D7F5;
+}
+
+.section table thead,
+.section table th,
+.attendance-table-container th,
+.student-table-container th,
+.report-table-container th {
+    background: #091540;
+    color: #FFFFFF;
+    border-color: #26396B;
+}
+
+.section table td,
+.attendance-table-container td,
+.student-table-container td,
+.report-table-container td {
+    background: #FFFFFF;
+    color: #26334D;
+    border-color: #E1E8F7;
+}
+
+.section table tbody tr:hover td,
+.attendance-table-container tbody tr:hover td,
+.student-table-container tbody tr:hover td,
+.report-table-container tbody tr:hover td {
+    background: #EDF2FF;
+}
+
+/* STUDENT GROUP BUTTONS */
+
+.student-category-button {
+    background: #FFFFFF;
+    border-color: #C9D7F5;
+    color: #22396F;
+}
+
+.student-category-button:hover {
+    background: #EDF2FF;
+    border-color: #056DBB;
+    box-shadow: 0 4px 12px rgba(9, 9, 121, 0.1);
+}
+
+.student-category-button span {
+    color: #7885A5;
+}
+
+.back-student-groups {
+    background: #EDF2FF;
+    border-color: #C9D7F5;
+    color: #22396F;
+}
+
+.back-student-groups:hover {
+    background: #DCE7FF;
+}
+
+/* ATTENDANCE CARD */
+
+.attendance-card,
+.attendance-card-header {
+    background: #FFFFFF;
+    border-color: #D6E1FA;
+}
+
+.attendance-card-header h3 {
+    color: #22396F;
+}
+
+.attendance-card-header p {
+    color: #7885A5;
+}
+
+/* REPORT HEADER */
+
+.report-header {
+    background: #FFFFFF;
+    border-color: #D6E1FA;
+}
+
+.report-header h3 {
+    color: #7885A5;
+}
+
+.report-header h2 {
+    color: #17213D;
+}
+
+.report-header p {
+    color: #7885A5;
+}
+
+/* REPORT PRINT BUTTON */
+
+.print-report-button {
+    background: #EDF2FF;
+    border-color: #C9D7F5;
+    color: #22396F;
+}
+
+.print-report-button:hover {
+    background: #DCE7FF;
+    border-color: #7B9FF2;
+}
+
+/* REPORT SUMMARY */
+
+.report-summary {
+    background: #FFFFFF;
+    border-color: #D6E1FA;
+}
+
+.report-summary-item span {
+    color: #7885A5;
+}
+
+/* SCANNER */
+
+.rfid-scanner-icon {
+    background: #EDF2FF;
+    border-color: #C9D7F5;
+}
+
+.rfid-scanner-status {
+    border-color: #D6E1FA;
+}
+
+.rfid-scanner-status span {
+    color: #22396F;
+}
+
+/* SCANNED STUDENT */
+
+.scanned-student-card {
+    border-color: #C9D7F5;
+}
+
+.scanned-student-header {
+    background: #091540;
+    border-color: #26396B;
+}
+
+.scanned-student-header h3 {
+    color: #FFFFFF;
+}
+
+.scanned-student-details {
+    background: #D6E1FA;
+}
+
+.scanned-student-details > div {
+    background: #FFFFFF;
+}
+
+.scanned-student-details span {
+    color: #7885A5;
+}
+
+.scanned-student-details strong {
+    color: #17213D;
+}
+
+/* EMPTY MESSAGES */
+
+.section table td[colspan],
+.empty-student-row td,
+.empty-report-row td {
+    color: #7885A5;
+}
+
+/* KEEP STATUS COLORS CLEAR */
+
+.status-badge.present {
+    background: #E5F3E9;
+    color: #FFF2A0;
+    border-color: #CCE5D3;
+}
+
+.status-badge.late {
+    background: #FFF3DF;
+    color: #A46B1C;
+    border-color: #F1DFBD;
+}
+
+.status-badge.absent {
+    background: #F9E7E7;
+    color: #A64B4B;
+    border-color: #ECCFCF;
+}
+
+/* MOBILE */
+
+@media (max-width: 600px) {
+    .sidebar {
+        background: linear-gradient(
+            180deg,
+            #020024,
+            #090979
+        );
+        border-bottom-color: #26396B;
+    }
+}
+
+/* PRINT: KEEP ATTENDANCE REPORT BLACK AND WHITE */
+
+@media print {
+    html,
+    body,
+    .section,
+    #attendanceReport {
+        background: #FFFFFF !important;
+        color: #000000 !important;
+    }
+
+    .report-table-container th,
+    .report-table-container td {
+        background: #FFFFFF !important;
+        color: #000000 !important;
+        border-color: #000000 !important;
+    }
+}

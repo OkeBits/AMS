@@ -1,0 +1,169 @@
+
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Parent Login | West Prime Horizon Institute Inc.</title>
+
+    <link rel="stylesheet" href="/parent_login.css">
+</head>
+<body>
+
+    <main class="login-container">
+
+        <section class="login-card">
+
+            <div class="school-logo">
+                <img src="school-logo.png"
+                     alt="West Prime Horizon Institute school logo">
+            </div>
+
+            <p class="portal-label">PARENT PORTAL</p>
+
+            <h1>Welcome, Parents!</h1>
+
+            <p class="subtitle">
+                Login to view student attendance information.
+            </p>
+
+            <div id="error-message"
+                 class="message error-message"
+                 role="alert"
+                 aria-live="polite"
+                 hidden>
+            </div>
+
+            <div id="success-message"
+                 class="message success-message"
+                 role="status"
+                 aria-live="polite"
+                 hidden>
+            </div>
+
+            
+<form id="parent-login-form" autocomplete="off">
+
+    <div class="form-group">
+        <label for="parent-name">Parent's Full Name</label>
+        <input
+            type="text"
+            id="parent-name"
+            name="parent_name"
+            placeholder="Enter your registered full name"
+            autocomplete="off"
+            required>
+    </div>
+
+    <div class="form-group">
+        <label for="phone-number">Registered Phone Number</label>
+        <input
+            type="tel"
+            id="phone-number"
+            name="phone_number"
+            placeholder="09XXXXXXXXX"
+            inputmode="tel"
+            autocomplete="off"
+            pattern="09[0-9]{9}"
+            maxlength="11"
+            title="Enter an 11-digit Philippine mobile number beginning with 09."
+            required>
+    </div>
+
+    <button type="submit" id="login-button" class="login-button">
+        View Student's Attendance
+    </button>
+
+</form>
+
+            <p class="footer">
+                &copy; <span id="current-year"></span>
+                West Prime Horizon Institute Inc.
+            </p>
+
+        </section>
+
+    </main>
+
+    <script>
+        // Display the current year.
+        document.getElementById("current-year").textContent =
+            new Date().getFullYear();
+
+        
+
+        // Clear messages when the parent edits a field.
+        const loginForm = document.getElementById("parent-login-form");
+
+        loginForm.addEventListener("input", function () {
+            document.getElementById("error-message").hidden = true;
+            document.getElementById("success-message").hidden = true;
+        });
+
+        /*
+         * Authentication will be connected to Flask in the next step.
+         * Do not add a frontend-only login check: credentials must be
+         * verified by the backend before attendance data is returned.
+         */
+
+
+const parentLoginForm = document.getElementById("parent-login-form");
+
+parentLoginForm.addEventListener("submit", async function(event) {
+    event.preventDefault();
+
+    const parentName =
+        document.getElementById("parent-name").value.trim();
+
+    const phoneNumber =
+        document.getElementById("phone-number").value.trim();
+
+    const errorMessage = document.getElementById("error-message");
+    const successMessage = document.getElementById("success-message");
+    const loginButton = document.getElementById("login-button");
+
+    errorMessage.hidden = true;
+    successMessage.hidden = true;
+    loginButton.disabled = true;
+
+    try {
+        const response = await fetch("/api/parent-login", {
+            method: "POST",
+            headers: {
+                "Content-Type": "application/json"
+            },
+            body: JSON.stringify({
+                parent_name: parentName,
+                phone_number: phoneNumber
+            })
+        });
+
+        const result = await response.json();
+
+        if (!response.ok || !result.success) {
+            errorMessage.textContent =
+                result.message || "Unable to verify parent details.";
+            errorMessage.hidden = false;
+            return;
+        }
+
+        successMessage.textContent = result.message;
+        successMessage.hidden = false;
+
+        window.location.href =
+            result.redirect || "/parent-dashboard.html";
+
+    } catch (error) {
+        errorMessage.textContent =
+            "Unable to connect to the server. Please try again.";
+        errorMessage.hidden = false;
+    } finally {
+        loginButton.disabled = false;
+    }
+});
+
+
+    </script>
+
+</body>
+</html>
